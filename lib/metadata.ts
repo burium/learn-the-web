@@ -14,7 +14,7 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: "https://learn-the-web.vercel.app",
-      images: "/banner.png",
+      images: "/og-image.png",
       siteName: "Learn The Web",
       ...override.openGraph,
     },
@@ -23,7 +23,7 @@ export function createMetadata(override: Metadata): Metadata {
       creator: "@lil_poop__",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: "/banner.png",
+      images: "/og-image.png",
       ...override.twitter,
     },
   };
@@ -32,4 +32,4 @@ export function createMetadata(override: Metadata): Metadata {
 export const baseUrl =
   process.env.NODE_ENV === "development" || !process.env.VERCEL_URL
     ? new URL("http://localhost:3000")
-    : new URL(`https://${process.env.VERCEL_URL}`);
+    : new URL("https://learn-the-web.vercel.app");
