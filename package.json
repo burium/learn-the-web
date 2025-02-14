@@ -13,9 +13,11 @@
     "fumadocs-mdx": "11.5.3",
     "fumadocs-ui": "15.0.6",
     "lucide-react": "^0.475.0",
+    "motion": "^12.4.2",
     "next": "^15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-use-measure": "^2.1.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.6",
