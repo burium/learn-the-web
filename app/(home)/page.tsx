@@ -54,7 +54,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 border-x border-t px-8 py-16 md:py-24 lg:flex-row md:px-16">
+      <div className="bg-fd-background flex flex-col gap-4 border-x border-t px-8 py-16 md:py-24 lg:flex-row md:px-16">
         <div className="shrink-0 flex-1 font-mono text-start">
           <p className="px-2 py-1 text-sm text-fd-muted-foreground hover:bg-fd-primary hover:text-fd-primary-foreground transition-colors ease-out duration-300 font-medium w-fit mb-4">
             Learn everything you need
@@ -93,7 +93,7 @@ export default function HomePage() {
 
       <div
         id="highlights"
-        className="border-l border-t grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        className="bg-fd-background border-l border-t grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       >
         <div className="col-span-full flex flex-col items-center justify-center border-b border-r p-8 text-center">
           <h2 className="flex items-center text-fd-primary px-1 text-2xl h-9 font-semibold hover:bg-fd-primary hover:text-fd-secondary transition-colors ease-out duration-300">
@@ -146,7 +146,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="border-x border-b px-8 py-16 sm:py-24 text-center bg-radial-[circle_at_center] from-fd-primary/5 to-fd-background">
+      <div className="bg-fd-background border-x border-b px-8 py-16 sm:py-24 text-center bg-radial-[circle_at_center] to-50% from-fd-secondary to-fd-background">
         <p className="overflow-y-clip text-center text-2xl font-semibold sm:text-3xl mb-4">
           Ready to Get Started?
         </p>
