@@ -5,7 +5,6 @@ export const getLastModified = async (page: { file: { path: string } }) => {
     owner: "r4ultv",
     repo: "learn-the-web",
     path: `content/docs/${page.file.path}`,
-    sha: "content-foundamentals", // TODO: remove for production
   });
 
   return lastEdit;
