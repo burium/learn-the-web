@@ -1,57 +1,167 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
-import { SlidingNumber } from "@/components/animations/sliding-number";
+import {
+  BookAIcon,
+  GraduationCapIcon,
+  ImageIcon,
+  LayoutDashboardIcon,
+  LayoutIcon,
+  PanelsTopLeftIcon,
+  SearchIcon,
+  ServerIcon,
+  ZapIcon,
+} from "lucide-react";
+
 import { GithubIcon } from "@/lib/icons";
+import gettingStarted from "@/public/getting-started-page.png";
 
 export default function HomePage() {
-  const targetDate = useMemo(() => new Date("2025-02-21").getTime(), []);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  const calculateTimeLeft = useCallback(() => {
-    const difference = targetDate - Date.now();
-
-    const days = Math.floor(difference / 86400000);
-    const hours = Math.floor((difference % 86400000) / 3600000);
-    const minutes = Math.floor((difference % 3600000) / 60000);
-    const seconds = Math.floor((difference % 60000) / 1000);
-
-    setTimeLeft({ days, hours, minutes, seconds });
-  }, [targetDate]);
-
-  useEffect(() => {
-    calculateTimeLeft();
-    const interval = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(interval);
-  }, [calculateTimeLeft]);
-
   return (
-    <main className="flex flex-1 flex-col items-center justify-center text-center">
-      <h1 className="font-mono">Learn the Web</h1>
-      <div className="flex items-center gap-1 font-mono mt-2">
-        <SlidingNumber value={timeLeft.days} padStart={true} />
-        <span className="text-neutral-400 mr-0.5">d</span>
-        <SlidingNumber value={timeLeft.hours} padStart={true} />
-        <span className="text-neutral-400 mr-0.5">h</span>
-        <SlidingNumber value={timeLeft.minutes} padStart={true} />
-        <span className="text-neutral-400 mr-0.5">m</span>
-        <SlidingNumber value={timeLeft.seconds} padStart={true} />
-        <span className="ttext-neutral-400">s</span>
+    <main className="max-w-6xl w-full mx-auto my-12">
+      <div className="bg-fd-muted-foreground/5 border-x border-t w-full p-12 overflow-hidden xl:overflow-visible">
+        <h1 className="text-4xl text-fd-primary text-pretty font-semibold max-w-2xl">
+          Your Journey into Web Development Begins Now
+        </h1>
+        <p className="text-lg text-fd-muted-foreground text-pretty max-w-2xl mt-6">
+          Whether you&apos;re a beginner or an experienced developer, we have a
+          range of courses and resources to help you achieve your goals.
+        </p>
+        <div className="mt-6 flex items-center gap-3">
+          <Link
+            href="/docs/fundamentals"
+            className="px-4 py-2.5 rounded-full bg-fd-primary text-sm text-fd-secondary font-semibold flex items-center hover:-translate-y-1 transition ease-out"
+          >
+            Getting Started
+          </Link>
+          <a
+            target="_blank"
+            href="https://github.com/r4ultv/learn-the-web"
+            className="px-4 py-2.5 rounded-full bg-fd-secondary text-sm text-fd-primary border font-semibold flex items-center hover:-translate-y-1 transition ease-out"
+          >
+            <GithubIcon className="size-4 mr-1.5" />
+            Contribute
+          </a>
+        </div>
+        <div className="mt-12 -mb-40 lg:-mb-18 xl:-mx-14 min-w-3xl">
+          <Image
+            src={gettingStarted}
+            alt="Getting Started"
+            priority
+            placeholder="blur"
+            className="w-full select-none dark:[mask-image:linear-gradient(to_bottom,white_70%,transparent_90%)] rounded-2xl border-6 border-neutral-700/50 invert dark:invert-0"
+          />
+        </div>
       </div>
 
-      <div className="absolute bottom-3">
-        <a
-          target="_blank"
-          href="https://github.com/r4ultv/learn-the-web"
-          className="text-neutral-400 hover:underline font-mono text-sm flex items-center gap-1"
-        >
-          <GithubIcon className="size-3.5" /> GitHub
-        </a>
+      <div className="flex flex-col gap-4 border-x border-t px-8 py-16 md:py-24 lg:flex-row md:px-16">
+        <div className="shrink-0 flex-1 font-mono text-start">
+          <p className="px-2 py-1 text-sm text-fd-muted-foreground hover:bg-fd-primary hover:text-fd-primary-foreground transition-colors ease-out duration-300 font-medium w-fit mb-4">
+            Learn everything you need
+          </p>
+          <h2 className="text-xl font-medium mb-4 sm:text-2xl">
+            One Website for All Your Needs
+          </h2>
+          <p className="text-sm text-fd-muted-foreground mb-6">
+            Whether you&apos;re a beginner or an experienced developer, our
+            website has everything you need to learn and grow in the world of
+            web development.
+          </p>
+        </div>
+        <div className="w-full max-w-lg flex flex-col items-end justify-center gap-4 font-mono">
+          <Link
+            href="/docs/fundamentals"
+            className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300"
+          >
+            <BookAIcon className="size-4" />
+            Fundamentals
+          </Link>
+          <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
+            <PanelsTopLeftIcon className="size-4" />
+            Frontend (soon)
+          </div>
+          <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
+            <ServerIcon className="size-4" />
+            Backend (soon)
+          </div>
+          <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
+            <GraduationCapIcon className="size-4" />
+            Advanced (soon)
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="highlights"
+        className="border-l border-t grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <div className="col-span-full flex flex-col items-center justify-center border-b border-r p-8 text-center">
+          <h2 className="flex items-center text-fd-primary px-1 text-2xl h-9 font-semibold hover:bg-fd-primary hover:text-fd-secondary transition-colors ease-out duration-300">
+            Highlights
+          </h2>
+        </div>
+        {[
+          {
+            title: "Documentation",
+            description: "Comprehensive documentation with MDX support",
+            icon: <BookAIcon className="size-4" />,
+          },
+          {
+            title: "Full-text Search",
+            description: "Built-in search capabilities to quickly find content",
+            icon: <SearchIcon className="size-4" />,
+          },
+          {
+            title: "Dynamic OG Image",
+            description:
+              "Automatically generate optimized social media previews",
+            icon: <ImageIcon className="size-4" />,
+          },
+          {
+            title: "Responsive Design",
+            description: "Optimized for all screen sizes and devices",
+            icon: <LayoutIcon className="size-4" />,
+          },
+          {
+            title: "Clean UI",
+            description: "Modern interface focused on readability",
+            icon: <LayoutDashboardIcon className="size-4" />,
+          },
+          {
+            title: "Fast and SEO-friendly",
+            description: "Optimized for speed and search engine visibility",
+            icon: <ZapIcon className="size-4" />,
+          },
+        ].map((highlight, index) => (
+          <div
+            key={index}
+            className="border-r border-b px-6 py-12 bg-radial-[circle_at_center] hover:from-fd-secondary to-fd-background transition-colors ease-out duration-300"
+          >
+            <div className="mb-4 flex flex-row items-center gap-2 text-fd-muted-foreground">
+              {highlight.icon}
+              <h2 className="text-sm font-medium">{highlight.title}</h2>
+            </div>
+            <span className="font-medium">{highlight.description}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="border-x border-b px-8 py-16 sm:py-24 text-center bg-radial-[circle_at_center] from-fd-primary/5 to-fd-background">
+        <p className="overflow-y-clip text-center text-2xl font-semibold sm:text-3xl mb-4">
+          Ready to Get Started?
+        </p>
+        <div className="flex flex-col gap-6 items-center">
+          <p className="max-w-xl text-fd-muted-foreground">
+            Begin your web development journey today. Our comprehensive
+            resources are designed to take you from beginner to expert.
+          </p>
+          <Link
+            href="/docs/fundamentals"
+            className="px-6 py-3 rounded-full bg-fd-primary text-fd-secondary font-semibold hover:-translate-y-1 transition ease-out"
+          >
+            Start Learning Now
+          </Link>
+        </div>
       </div>
     </main>
   );
