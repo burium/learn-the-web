@@ -9,10 +9,6 @@ This happens thanks to the **client-server model**, the fundamental way that mos
 
 ## What Is the Client-Server Model?
 
-You've explored the internet (the network) and the Web (the system of web pages).
-Now, let's understand how those web pages actually get from a computer somewhere in the world to your screen.
-This transfer relies on the **client-server model**, the fundamental architecture that powers most of the internet, and especially the Web.
-
 What exactly _is_ the client-server model? Imagine a restaurant.
 You, the customer, want to order food.
 You don't go into the kitchen and cook it yourself.
@@ -38,10 +34,12 @@ The request itself contains information such as the URL of the resource you're s
 The server receives the request and processes it.
 This processing might involve locating the requested web page, executing some code (server-side scripting), or accessing a database.
 After processing, the server sends a response back to the client.
-This response includes a status code, indicating whether the request was successful (like "200 OK") or if an error occurred (like "404 Not Found").
-The response also contains the requested data itself - perhaps the HTML code for a web page, an image, or a video - along with additional information (headers) about the response.
+This response includes a [status code](./http/response#common-status-codes-and-their-meanings), indicating whether the request was successful (like "200 OK") or if an error occurred (like "404 Not Found").
+The response also contains the requested data itself - perhaps the HTML code for a web page, an image, or a video - along with additional information ([headers](./http/headers)) about the response.
 Finally, your browser (the client) receives the response and displays the web page, image, or video, or carries out other actions based on the response.
-This entire cycle, from request to response, often happens incredibly quickly, sometimes in mere fractions of a second.
+This entire cycle, from [request](./http/request) to [response](./http/response), often happens incredibly quickly, sometimes in mere fractions of a second.
+
+![Client Server](./client-server.png)
 
 ## It's Not Just Web Pages
 
@@ -61,6 +59,5 @@ In back-end development, you'll write code that runs _on_ the server, handling c
 Understanding the flow of information between client and server is essential for debugging, optimizing performance, and ensuring security.
 Furthermore, you'll frequently work with APIs (Application Programming Interfaces), which heavily rely on the client-server model for communication between different applications.
 
-The client-server model is, in essence, the framework upon which all web development is built.
-It's the fundamental interaction that makes the Web, and much of the internet, function.
-Without it, online activities like browsing websites, sending emails, and playing online games wouldn't be possible.
+The client-server model is the basic way websites and many internet services work.
+It's what makes things like browsing websites, sending emails, and playing online games possible.
