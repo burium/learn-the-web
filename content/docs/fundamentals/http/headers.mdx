@@ -40,7 +40,7 @@ There are many different HTTP headers, each serving a specific purpose. They can
 
 Here are some of the most common and important HTTP headers:
 
-**Request Headers:**
+### Request Headers
 
 - `Host:`: Specifies the domain name of the server (e.g., `www.example.com`). This is required in HTTP/1.1 requests.
 - `User-Agent:`: Identifies the client making the request (e.g., the browser type and version).
@@ -52,7 +52,7 @@ Here are some of the most common and important HTTP headers:
 - `Referer:` [sic]: Indicates the URL of the page that linked to the requested resource.
 - `If-Modified-Since:`: Makes the request conditional. The server will only send the resource if it has been modified since the specified date.
 
-**Response Headers:**
+### Response Headers
 
 - `Content-Type:`: Specifies the type of content in the response body (e.g., `text/html; charset=UTF-8`, `image/jpeg`, `application/json`). This tells the browser how to interpret the data.
 - `Content-Length:`: Specifies the size of the response body in bytes.
@@ -64,7 +64,3 @@ Here are some of the most common and important HTTP headers:
 - `Set-Cookie:`: Sends cookies from the server to the client.
 - `Location:`: Used in redirection responses (3xx status codes) to specify the new URL.
 - `ETag`: An identifier for a version of the resource.
-
-**General Headers:**
-
-- `Connection:`: Specifies options of the connection.

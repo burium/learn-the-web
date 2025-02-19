@@ -22,9 +22,9 @@ It's the underlying protocol that makes browsing, downloading files, and interac
 
 HTTP is based on a simple but powerful **request-response cycle**:
 
-1.  **Client Sends a Request:** A client (usually a web browser) initiates communication by sending an HTTP request to a server.
+1.  **Client Sends a Request:** A [client](./client-server/client) (usually a web browser) initiates communication by sending an HTTP request to a server.
     This request includes information about what the client wants (e.g., a specific web page) and how it wants it (e.g., using the GET or POST method).
-2.  **Server Processes the Request:** The server receives the request, interprets it, and performs the necessary actions.
+2.  **Server Processes the Request:** The [server](./client-server/server) receives the request, interprets it, and performs the necessary actions.
     This might involve retrieving a file, running a script, accessing a database, or performing other operations.
 3.  **Server Sends a Response:** The server sends an HTTP response back to the client.
     This response includes a status code (indicating success or failure) and the requested data (e.g., the HTML code for a web page, an image, or an error message).
@@ -43,3 +43,5 @@ This entire cycle happens, often in a fraction of a second, every time you click
 - **Extensible:** HTTP is designed to be extensible.
   New features and functionalities can be added without breaking existing systems.
 - **Connectionless:** After the server responds to the request, the connection between the client and the server is closed
+
+![Http Features](./http.png)

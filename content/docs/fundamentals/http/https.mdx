@@ -11,7 +11,7 @@ HTTPS adds a critical layer of security to web traffic, protecting sensitive inf
 
 HTTPS is essentially HTTP _plus_ encryption.
 It uses TLS (Transport Layer Security), or its predecessor SSL (Secure Sockets Layer), to encrypt the communication between a client (usually a web browser) and a server.
-This encryption prevents eavesdropping and tampering with the data in transit.
+This keeps people from secretly listening to or changing the info as it travels.
 
 Think of it like this:
 
@@ -53,6 +53,8 @@ When you visit an HTTPS website, your browser performs the following steps (simp
     - Does the domain name in the certificate match the website's domain name?
 4.  **Key Exchange:** If the certificate is valid, the browser and server use asymmetric encryption to securely exchange a shared secret key.
 5.  **Encrypted Communication:** All subsequent communication between the browser and the server is encrypted using symmetric encryption with the shared secret key.
+
+![Https](./https.png)
 
 ## Why HTTPS is Important
 
