@@ -30,14 +30,14 @@ export default function HomePage() {
         <div className="mt-6 flex items-center gap-3">
           <Link
             href="/docs/fundamentals"
-            className="px-4 py-2.5 rounded-full bg-fd-primary text-sm text-fd-secondary font-semibold flex items-center hover:-translate-y-1 transition ease-out"
+            className="px-4 py-2.5 rounded-full bg-fd-primary text-sm text-fd-secondary font-semibold flex items-center hover:-translate-y-0.5 transition ease-out"
           >
             Getting Started
           </Link>
           <a
             target="_blank"
             href="https://github.com/r4ultv/learn-the-web"
-            className="px-4 py-2.5 rounded-full bg-fd-secondary text-sm text-fd-primary border font-semibold flex items-center hover:-translate-y-1 transition ease-out"
+            className="px-4 py-2.5 rounded-full bg-fd-secondary text-sm text-fd-primary border font-semibold flex items-center hover:-translate-y-0.5 transition ease-out"
           >
             <GithubIcon className="size-4 mr-1.5" />
             Contribute
@@ -157,7 +157,7 @@ export default function HomePage() {
           </p>
           <Link
             href="/docs/fundamentals"
-            className="px-6 py-3 rounded-full bg-fd-primary text-fd-secondary font-semibold hover:-translate-y-1 transition ease-out"
+            className="px-6 py-3 rounded-full bg-fd-primary text-fd-secondary font-semibold hover:-translate-y-0.5 transition ease-out"
           >
             Start Learning Now
           </Link>
