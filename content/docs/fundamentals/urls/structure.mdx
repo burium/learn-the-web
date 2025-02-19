@@ -21,10 +21,9 @@ Here's a breakdown of each component:
 
     - This is the very first part of the URL, followed by a colon (`:`) and two forward slashes (`//`).
       It tells the browser _how_ to access the resource - which protocol to use.
-    - The most common scheme is `http://` (Hypertext Transfer Protocol), the foundation of data communication on the web.
-    - `https://` (HTTP Secure) is the secure version of HTTP.
-      It encrypts the communication between your browser and the server, protecting your data.
-      You should always see `https://` on websites that handle sensitive information, like online banking or shopping sites.
+      - The most common scheme is `http://` (Hypertext Transfer Protocol), the foundation of data communication on the web.
+      - `https://` (HTTP Secure) is the secure version of HTTP, encrypting the communication between your browser and the server to protect your data.
+        While crucial for sites handling sensitive information like online banking or shopping, `https://` is now considered the standard for all websites, even those not dealing with sensitive data.
     - Other schemes exist, such as `ftp://` (File Transfer Protocol) for file transfers and `mailto:` for initiating email messages.
 
 2.  **Domain Name:**
@@ -32,6 +31,7 @@ Here's a breakdown of each component:
     - This is the human-readable name of the website, like `example.com`.
       It's what you typically remember and type into your browser.
     - DNS (Domain Name System) translates this domain name into the server's numerical IP address.
+      For more information, see the [DNS page](../ip-and-dns/dns).
     - The domain name often includes a _subdomain_, which appears before the main domain name.
       The most common subdomain is `www`, but others exist, like `blog.example.com` or `shop.example.com`.
 
@@ -82,17 +82,3 @@ Sometimes, URLs need to include characters that are not allowed in their raw for
 In these cases, **URL encoding** (also called percent-encoding) is used.
 This replaces the unsafe characters with a percent sign (`%`) followed by a two-digit hexadecimal code.
 For example, a space is encoded as `%20`.
-
-## Understanding URL Structure: Key to Web Development
-
-As a web developer, a deep understanding of URL structure is essential.
-You'll use URLs constantly for:
-
-- Creating hyperlinks.
-- Structuring your website's file system.
-- Handling form submissions.
-- Interacting with APIs.
-- Understanding HTTP requests.
-- Creating REST APIs.
-
-By mastering the components of a URL, you gain a deeper understanding of how the web works and how to build effective and well-structured web applications.
