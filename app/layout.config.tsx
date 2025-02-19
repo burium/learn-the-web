@@ -99,5 +99,10 @@ export const baseOptions: BaseLayoutProps = {
       url: "/#highlights",
       active: "nested-url",
     },
+    {
+      text: "Sponsor",
+      url: "https://github.com/sponsors/R4ULtv/",
+      active: "url",
+    },
   ],
 };
