@@ -20,7 +20,7 @@ export default async function Page(props: {
 
   const MDX = page.data.body;
 
-  const lastModified = await getLastModified(page.file.path);
+  const lastModified = await getLastModified(page);
 
   return (
     <DocsPage
