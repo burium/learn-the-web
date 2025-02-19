@@ -74,7 +74,8 @@ pnpm dev
 
 ## Documentation
 
-You can start adding your documentation in the `content` directory using MDX format. The documentation is automatically organized based on the file structure.
+You can start adding your documentation in the `content` directory using MDX format.
+The documentation is automatically organized based on the file structure.
 
 ## Contributing
 
