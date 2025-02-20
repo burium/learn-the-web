@@ -4,8 +4,17 @@ A comprehensive documentation website built with Next.js, Fumadocs UI, and MDX t
 
 ## Overview
 
-Learn The Web is a modern documentation platform designed to help people understand web development concepts from foundational principles to advanced techniques.
-The content is organized in a logical progression, making it ideal for both beginners and experienced developers looking to fill knowledge gaps.
+Learn The Web is a modern documentation platform designed to help people understand web development concepts from foundational principles to advanced techniques. The content is organized in a logical progression:
+
+1. **Foundational Concepts**: Core principles of how the web works including:
+   - The Internet vs The Web
+   - Client-Server Model
+   - IP Addresses and DNS
+   - URLs
+   - HTTP and HTTPS
+2. **Front-End Development** (Coming Soon): User interface development
+3. **Back-End Development** (Coming Soon): Server-side logic
+4. **Advanced Concepts** (Coming Soon): Production-level skills
 
 ## Features
 
@@ -94,4 +103,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Support
 
-If you find this project helpful, please consider giving it a ⭐️ on GitHub!
+If you find this project helpful, please consider:
+- Giving it a ⭐️ on GitHub
+- [Becoming a sponsor](https://github.com/sponsors/R4ULtv/)
