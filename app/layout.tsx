@@ -21,7 +21,7 @@ export const metadata = createMetadata({
     default: "Learn The Web",
   },
   description:
-    "A collection of docs, tutorials and resources to learn web development.",
+    "Your complete guide to web development. Learn the fundamentals, front-end, back-end, and advanced concepts with interactive tutorials and clear explanations.",
   metadataBase: baseUrl,
 });
 
@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth selection:bg-neutral-400/25`}
       suppressHydrationWarning
     >
       <body className="flex flex-col min-h-screen">
