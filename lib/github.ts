@@ -5,7 +5,7 @@ export const getLastModified = async (page: { file: { path: string } }) => {
     owner: "r4ultv",
     repo: "learn-the-web",
     path: `content/docs/${page.file.path}`,
-    token: process.env.GITHUB_TOKEN,
+    token: `Bearer ${process.env.GITHUB_TOKEN}`,
   });
 
   return lastEdit;
