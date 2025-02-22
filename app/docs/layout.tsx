@@ -10,7 +10,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       tree={source.pageTree}
       links={[]}
       sidebar={{
-        tabs: false, // Only one tab is available right now so it's disabled
         defaultOpenLevel: 1,
       }}
     >
