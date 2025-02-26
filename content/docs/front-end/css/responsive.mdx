@@ -8,7 +8,7 @@ But in today's world, websites need to look good and work well on _all_ devices,
 That's where **responsive design** comes in.
 Responsive design is the practice of creating web pages that adapt to different screen sizes, orientations, and resolutions, providing an optimal viewing experience for every user.
 
-## The Importance of Responsive Design
+## Importance of Responsive Design
 
 Responsive design is essential for several reasons:
 
@@ -19,7 +19,7 @@ Responsive design is essential for several reasons:
   Responsive design can improve your search engine rankings.
 - **Cost-Effective:** It's more efficient to maintain a single responsive website than to create separate websites for desktop and mobile devices.
 
-## The Viewport Meta Tag: Setting the Stage
+## Viewport Meta Tag
 
 The first step in creating a responsive website is to include the **viewport meta tag** in the `<head>` section of your HTML document:
 
@@ -32,15 +32,13 @@ The `width=device-width` part sets the width of the viewport to the width of the
 
 > This meta tag is essential for responsive design. Always include it in your HTML documents!
 
-## Flexible Grids: Adapting Column Widths
+## Flexible Grids
 
 Flexible grids are a fundamental technique for creating responsive layouts.
 Instead of using fixed widths for your columns, you use percentages or other relative units.
 This allows the columns to adapt to different screen sizes.
 
-### Example: A Simple Flexible Grid
-
-```html
+```html title="Example: A Simple Flexible Grid"
 <div style="display: flex;">
   <div style="width: 30%;">Column 1</div>
   <div style="width: 70%;">Column 2</div>
@@ -49,7 +47,7 @@ This allows the columns to adapt to different screen sizes.
 
 In this example, the two columns will always take up 30% and 70% of the container's width, regardless of the screen size.
 
-## Media Queries: Targeting Specific Devices
+## Media Queries
 
 Media queries are a powerful CSS feature that allows you to apply different styles based on the characteristics of the device, such as screen size, orientation, and resolution.
 
@@ -67,9 +65,7 @@ The basic syntax for a media query is:
 - `min-width`: Applies styles when the screen width is greater than or equal to a specified value.
 - `orientation`: Applies styles when the device is in a specific orientation (portrait or landscape).
 
-### Example: Using Media Queries
-
-```css
+```css title="Example: Using Media Queries"
 /* Default styles for larger screens */
 body {
   font-size: 16px;
@@ -136,7 +132,7 @@ By designing for mobile first, you ensure that your website is fast and efficien
 - **Simplified Code:** It's often easier to start with a simple mobile layout and then add complexity for larger screens than to start with a complex desktop layout and try to simplify it for mobile.
 - **Better User Experience:** By focusing on the mobile experience first, you ensure that your website is usable and accessible on the devices that most people are using to access the web.
 
-## Flexible Images: Scaling Images to Fit
+## Flexible Images
 
 Images can often be a problem in responsive design, as they can overflow their containers and break the layout.
 To prevent this, you can use the following CSS:
@@ -151,12 +147,12 @@ img {
 The `max-width: 100%;` property ensures that the image never exceeds the width of its container.
 The `height: auto;` property maintains the image's aspect ratio.
 
-## Testing Your Responsive Design
+## Testing
 
 It's crucial to test your responsive design on a variety of devices and screen sizes
 You can use browser developer tools to simulate different devices or test your website on actual mobile devices.
 
-## Practice and Iterate
+## Practice
 
 Responsive design is an iterative process.
 It takes time and experimentation to create websites that look good and work well on all devices.
