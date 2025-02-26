@@ -3,9 +3,12 @@ title: Selectors
 description: Targeting HTML Elements with Precision
 ---
 
-You've learned that CSS is used to style HTML elements. But how do you tell CSS _which_ elements to style? That's where **selectors** come in. Selectors are patterns that match against HTML elements in your document, allowing you to target specific elements and apply styles to them.
+You've learned that CSS is used to style HTML elements.
+But how do you tell CSS _which_ elements to style? That's where **selectors** come in.
+Selectors are patterns that match against HTML elements in your document, allowing you to target specific elements and apply styles to them.
 
-Think of selectors like search queries. They let you find the specific HTML elements you want to modify, whether it's all the paragraphs, just the headings with a certain class, or even the links inside a particular navigation menu.
+Think of selectors like search queries.
+They let you find the specific HTML elements you want to modify, whether it's all the paragraphs, just the headings with a certain class.
 
 ## Basic Selectors
 
@@ -27,7 +30,8 @@ h1 {
 }
 ```
 
-- **Class Selectors:** These select all elements that have a specific class attribute. Class selectors start with a dot (`.`).
+- **Class Selectors:** These select all elements that have a specific class attribute.
+  Class selectors start with a dot (`.`).
 
 ```html
 <p class="highlight">This paragraph is highlighted.</p>
@@ -42,7 +46,9 @@ h1 {
 }
 ```
 
-- **ID Selectors:** These select a single element that has a specific `id` attribute. ID selectors start with a hash symbol (`#`). IDs should be unique within a document.
+- **ID Selectors:** These select a single element that has a specific `id` attribute.
+  ID selectors start with a hash symbol (`#`).
+  IDs should be unique within a document.
 
 ```html
 <p id="introduction">This is the introduction paragraph.</p>
@@ -61,7 +67,8 @@ h1 {
 
 You can combine selectors to target elements more precisely:
 
-- **Descendant Selectors:** These select elements that are descendants (children, grandchildren, etc.) of another element. You separate the selectors with a space.
+- **Descendant Selectors:** These select elements that are descendants (children, grandchildren, etc.) of another element.
+  You separate the selectors with a space.
 
 ```html
 <article>
@@ -79,7 +86,8 @@ article p {
 }
 ```
 
-- **Child Selectors:** These select elements that are _direct_ children of another element. You use the greater-than sign (`>`).
+- **Child Selectors:** These select elements that are _direct_ children of another element.
+  You use the greater-than sign (`>`).
 
 ```html
 <article>
@@ -94,37 +102,6 @@ article p {
 article > p {
   /* Styles for paragraph elements that are DIRECT children of article elements */
   font-weight: bold;
-}
-```
-
-- **Adjacent Sibling Selectors:** These select an element that is immediately preceded by another element (i.e., a sibling that comes right after). You use the plus sign (`+`).
-
-```html
-<h2>Heading</h2>
-<p>This paragraph is an adjacent sibling of the heading.</p>
-<p>This paragraph is not.</p>
-```
-
-```css
-h2 + p {
-  /* Styles for paragraph elements that are immediately preceded by h2 elements */
-  margin-top: 0; /* Remove the default top margin */
-}
-```
-
-- **General Sibling Selectors:** These select all sibling elements that follow a specified element (not necessarily immediately). You use the tilde (`~`).
-
-```html
-<h2>Heading</h2>
-<p>This paragraph is a sibling of the heading.</p>
-<div>Some Content</div>
-<p>This paragraph is also a sibling of the heading.</p>
-```
-
-```css
-h2 ~ p {
-  /* Styles for paragraph elements that are siblings of h2 elements */
-  color: blue;
 }
 ```
 
@@ -158,47 +135,6 @@ input[type="text"] {
 }
 ```
 
-- **Attribute Value Contains:**
-
-```html
-<a href="https://www.example.com/page1">Page 1</a>
-<a href="https://www.example.com/page2">Page 2</a>
-```
-
-```css
-a[href*="example.com"] {
-  /* Styles for all a elements whose href attribute contains "example.com" */
-  font-weight: bold;
-}
-```
-
-- **Attribute Value Starts With:**
-
-```html
-<a href="mailto:john.doe@example.com">Email John</a>
-<a href="tel:+15551234567">Call Us</a>
-```
-
-```css
-a[href^="mailto:"] {
-  /* Styles for all a elements whose href attribute starts with "mailto:" */
-  text-decoration: none; /* Remove underline from email links */
-}
-```
-
-- **Attribute Value Ends With:**
-
-```html
-<a href="document.pdf">PDF Document</a> <a href="image.jpg">Image</a>
-```
-
-```css
-a[href$=".pdf"] {
-  /* Styles for all a elements whose href attribute ends with ".pdf" */
-  background-color: #eee; /* Add a background to PDF links */
-}
-```
-
 ## Pseudo-Classes
 
 Pseudo-classes are keywords added to selectors that specify a special state of the selected element(s).
@@ -212,15 +148,6 @@ a:hover {
 }
 ```
 
-- **`:active`:** Applies styles when the element is being activated (e.g., clicked).
-
-```css
-button:active {
-  /* Styles for button elements when they are being clicked */
-  background-color: #ddd;
-}
-```
-
 - **`:focus`:** Applies styles when the element has focus (e.g., when a user tabs to it).
 
 ```css
@@ -231,85 +158,10 @@ input:focus {
 }
 ```
 
-- **`:visited`:** Applies styles to links that the user has already visited.
-
-```css
-a:visited {
-  /* Styles for visited a elements */
-  color: purple;
-}
-```
-
-- **`:first-child` and `:last-child`:** Apply styles to the first or last child element within its parent.
-
-```css
-ul li:first-child {
-  /* Styles for the first list item in a ul */
-  font-weight: bold;
-}
-```
-
-- **`:nth-child(n)`:** Selects an element that is the nth child of its parent.
-
-```css
-ul li:nth-child(2) {
-  /* Selects the second list item */
-  color: green;
-}
-
-/* Select even number elements */
-ul li:nth-child(even) {
-  background: #ccc;
-}
-
-/* Select odd number elements */
-ul li:nth-child(odd) {
-  background: #eee;
-}
-```
-
-## Pseudo-Elements
-
-Pseudo-elements create virtual elements within an existing element, allowing you to style specific parts of the element.
-
-- **`::before`:** Inserts content before the element's content.
-
-```css
-h2::before {
-  content: ">> ";
-  color: blue;
-}
-```
-
-- **`::after`:** Inserts content after the element's content.
-
-```css
-p::after {
-  content: " (Read More)";
-  color: gray;
-}
-```
-
-- **`::first-line`:** Styles the first line of a block-level element.
-
-```css
-p::first-line {
-  font-weight: bold;
-}
-```
-
-- **`::first-letter`:** Styles the first letter of a block-level element.
-
-```css
-p::first-letter {
-  font-size: 2em;
-  float: left;
-}
-```
-
 ## Specificity: The Key to CSS Conflicts
 
-When multiple CSS rules apply to the same element, the browser needs to determine which rule takes precedence. This is determined by the _specificity_ of the selectors.
+When multiple CSS rules apply to the same element, the browser needs to determine which rule takes precedence.
+This is determined by the _specificity_ of the selectors.
 
 Specificity is a complex topic, but here's the basic idea:
 
@@ -325,4 +177,6 @@ Understanding specificity is crucial for debugging CSS and ensuring that your st
 
 ## Practice Makes Perfect
 
-Selectors are the foundation of CSS. The more you practice using them, the better you'll become at targeting the specific elements you want to style. Experiment with different selectors and combinations, and don't be afraid to consult the CSS documentation for more information.
+Selectors are the foundation of CSS.
+The more you practice using them, the better you'll become at targeting the specific elements you want to style.
+Experiment with different selectors and combinations, and don't be afraid to consult the CSS documentation for more information.
