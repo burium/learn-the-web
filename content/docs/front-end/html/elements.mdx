@@ -48,27 +48,10 @@ There are _many_ different HTML elements, each with a specific purpose. You don'
 <p>This is a sentence with a <span style="color: blue;">blue word</span>.</p>
 ```
 
-- **`<strong>` and `<em>`:** These are used to emphasize text. `<strong>` indicates strong importance (usually displayed in bold), and `<em>` indicates emphasis (usually displayed in italics). Use them semantically (based on meaning), not just for styling.
-
-```html
-<p>
-  This is <strong>very important</strong> information, and you should pay
-  <em>close attention</em>.
-</p>
-```
-
 - **`<br>`:** A self-closing element that inserts a line break. Use this sparingly; often, other elements (like `<p>`) are better for structuring content.
 
 ```html
 <p>This is the first line.<br />This is the second line.</p>
-```
-
-- **`<hr>`**: Creates a thematic break.
-
-```html
-<p>This is the first thematic.</p>
-<hr />
-<p>This is the second thematic.</p>
 ```
 
 ### Grouping Content
@@ -173,7 +156,9 @@ There are _many_ different HTML elements, each with a specific purpose. You don'
 
 ### Embedded Content
 
-- **`<iframe>`**: Creates an embedded frame to display content from other webpage.
+- **`<iframe>`**: Creates an embedded frame that allows you to display content from another webpage within your current page.
+  This element acts like a window to external content, letting you incorporate things like YouTube videos, Google Maps, or other web pages directly into your site without requiring users to navigate away.
+  The `src` attribute specifies the URL of the content to embed.
 
 ```html
 <iframe src="https://www.example.com"></iframe>
@@ -210,4 +195,4 @@ As you saw with `<img>` and `<br>`, some elements don't have any content between
 
 ## Keep Learning and Experimenting!
 
-This is just a starting point. There are many more HTML elements to discover, and the best way to learn is by experimenting. Try creating different elements, nesting them, and seeing how they look in your browser. Don't be afraid to make mistakes - that's how you learn! And use online resources like the MDN Web Docs (developer.mozilla.org) to look up specific elements and their attributes. It's your best friend for web development.
+This is just a starting point. There are many more HTML elements to discover, and the best way to learn is by experimenting. Try creating different elements, nesting them, and seeing how they look in your browser. Don't be afraid to make mistakes - that's how you learn! And use online resources like the [MDN Web Docs](https://developer.mozilla.org) to look up specific elements and their attributes. It's your best friend for web development.
