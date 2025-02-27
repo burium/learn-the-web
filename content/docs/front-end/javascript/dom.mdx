@@ -3,17 +3,24 @@ title: DOM
 description: Interacting with the Web Page Structure
 ---
 
-You've learned the basics of JavaScript, how to use variables, data types, and functions. Now, let's connect JavaScript to the _web page_ itself. The **Document Object Model (DOM)** is your key to manipulating the content, structure, and style of a web page using JavaScript. It's the bridge between your JavaScript code and the HTML elements in the browser.
+You've learned the basics of JavaScript, how to use variables, data types, and functions.
+Now, let's connect JavaScript to the _web page_ itself.
+The **Document Object Model (DOM)** is your key to manipulating the content, structure, and style of a web page using JavaScript.
+It's the bridge between your JavaScript code and the HTML elements in the browser.
 
 ## What is the DOM?
 
-The DOM (Document Object Model) is a programming interface for HTML and XML documents. It represents the page as a tree-like structure, where each HTML element, attribute, and text node is represented as an _object_.
+The DOM (Document Object Model) is a programming interface for HTML and XML documents.
+It represents the page as a tree-like structure, where each HTML element, attribute, and text node is represented as an _object_.
 
-Think of the DOM as a map of your web page. It allows JavaScript to navigate the HTML structure and make changes to it in real-time.
+Think of the DOM as a map of your web page.
+It allows JavaScript to navigate the HTML structure and make changes to it in real-time.
 
 ## The DOM Tree
 
-The DOM represents the HTML document as a tree, with the `document` object as the root. Each HTML element becomes a _node_ in the tree. The DOM tree has a hierarchical structure:
+The DOM represents the HTML document as a tree, with the `document` object as the root.
+Each HTML element becomes a _node_ in the tree.
+The DOM tree has a hierarchical structure:
 
 - The `document` object is the root of the tree.
 - The `<html>` element is the root element of the document.
@@ -24,7 +31,8 @@ The DOM represents the HTML document as a tree, with the `document` object as th
 
 JavaScript provides several methods for accessing elements in the DOM:
 
-- **`document.getElementById(id)`:** Returns the element with the specified `id` attribute. This is the fastest and most efficient way to access a specific element.
+- **`document.getElementById(id)`:** Returns the element with the specified `id` attribute.
+  This is the fastest and most efficient way to access a specific element.
 
 ```html
 <p id="myParagraph">This is a paragraph.</p>
@@ -94,7 +102,8 @@ JavaScript provides several methods for accessing elements in the DOM:
 **Important Considerations:**
 
 - `querySelector` and `querySelectorAll` are generally preferred over `getElementsByTagName` and `getElementsByClassName` because they are more flexible and can use any CSS selector.
-- `getElementsByTagName` and `getElementsByClassName` return a _live_ HTMLCollection, meaning that the collection is automatically updated if the DOM changes. `querySelector` and `querySelectorAll` return a static NodeList, meaning that the list is not updated automatically.
+- `getElementsByTagName` and `getElementsByClassName` return a _live_ HTMLCollection, meaning that the collection is automatically updated if the DOM changes.
+  `querySelector` and `querySelectorAll` return a static NodeList, meaning that the list is not updated automatically.
 - Always try to use `getElementById` when possible.
 
 ## Modifying Elements in the DOM
@@ -108,7 +117,8 @@ const paragraph = document.getElementById("myParagraph");
 paragraph.textContent = "This is the new text.";
 ```
 
-- **`element.innerHTML`:** Gets or sets the HTML content of an element. Use this with caution, as it can be a security risk if you're inserting user-supplied data.
+- **`element.innerHTML`:** Gets or sets the HTML content of an element.
+  Use this with caution, as it can be a security risk if you're inserting user-supplied data.
 
 ```javascript
 const div = document.getElementById("myDiv");
@@ -188,4 +198,7 @@ You can navigate the DOM tree using the following properties of element nodes:
 
 ## Practice and Explore
 
-The DOM is a powerful tool for manipulating web pages with JavaScript. Practice accessing, modifying, and creating elements in the DOM. Experiment with different DOM methods and properties. The more you work with the DOM, the better you'll understand how to create dynamic and interactive web experiences.
+The DOM is a powerful tool for manipulating web pages with JavaScript.
+Practice accessing, modifying, and creating elements in the DOM.
+Experiment with different DOM methods and properties.
+The more you work with the DOM, the better you'll understand how to create dynamic and interactive web experiences.

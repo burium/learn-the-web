@@ -3,11 +3,15 @@ title: Events
 description: Responding to User Interactions
 ---
 
-You've learned how to access and manipulate HTML elements using the DOM. Now, let's make your web pages truly interactive by responding to user actions with **events**. Events are actions or occurrences that happen in the browser, such as button clicks, mouse movements, form submissions, and page loads. JavaScript allows you to "listen" for these events and execute code in response.
+You've learned how to access and manipulate HTML elements using the DOM.
+Now, let's make your web pages truly interactive by responding to user actions with **events**.
+Events are actions or occurrences that happen in the browser, such as button clicks, mouse movements, form submissions, and page loads.
+JavaScript allows you to "listen" for these events and execute code in response.
 
 ## What are Events?
 
-Events are signals that are fired by the browser when something interesting happens. These signals can be triggered by user actions, such as:
+Events are signals that are fired by the browser when something interesting happens.
+These signals can be triggered by user actions, such as:
 
 - Clicking a button
 - Moving the mouse
@@ -20,13 +24,14 @@ Events can also be triggered by the browser itself, such as:
 - The page finishing loading
 - An error occurring
 
-## Event Listeners: Listening for Events
+## Event Listeners
 
-To respond to an event, you need to attach an **event listener** to an HTML element. An event listener is a function that will be executed when a specific event occurs on that element.
+To respond to an event, you need to attach an **event listener** to an HTML element.
+An event listener is a function that will be executed when a specific event occurs on that element.
 
 There are several ways to attach event listeners in JavaScript:
 
-### Inline Event Handlers (Not Recommended)
+### Inline Handlers (Not Recommended)
 
 You can add event handlers directly to HTML elements using event attributes:
 
@@ -34,9 +39,10 @@ You can add event handlers directly to HTML elements using event attributes:
 <button onclick="alert('Button clicked!')">Click Me</button>
 ```
 
-However, this approach is generally _not_ recommended because it mixes HTML and JavaScript, making your code harder to maintain.
+However, this approach is generally _not_ recommended for standard HTML and JavaScript projects because it mixes HTML and JavaScript, making your code harder to maintain.
+This is different if you are using a framework like React, where these inline handlers are compiled and handled differently.
 
-### DOM Event Listeners (Recommended)
+### DOM Listeners (Recommended)
 
 The preferred way to attach event listeners is to use the `addEventListener()` method of the DOM element:
 
@@ -63,7 +69,7 @@ button2.addEventListener("click", () => {
 });
 ```
 
-### Removing Event Listeners
+### Removing Listeners
 
 You can remove an event listener using the `removeEventListener()` method:
 
@@ -79,7 +85,8 @@ button3.addEventListener("click", handleClick);
 button3.removeEventListener("click", handleClick);
 ```
 
-**Important:** You must pass the _same_ function reference to `removeEventListener()` that you passed to `addEventListener()` for it to work. This is why it's important to assign the event handler function to a variable.
+**Important:** You must pass the _same_ function reference to `removeEventListener()` that you passed to `addEventListener()` for it to work.
+This is why it's important to assign the event handler function to a variable.
 
 ## Common Events
 
@@ -93,11 +100,13 @@ Here are some of the most common events you'll use in JavaScript:
 - **`keyup`:** Occurs when the user releases a key.
 - **`submit`:** Occurs when a form is submitted.
 - **`load`:** Occurs when the page or an element has finished loading.
-- **`DOMContentLoaded`:** Occurs when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. It is the preferred event to start adding event listeners.
+- **`DOMContentLoaded`:** Occurs when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.
+  It is the preferred event to start adding event listeners.
 
 ## The Event Object
 
-When an event occurs, the browser creates an **event object** and passes it as an argument to the event handler function. The event object contains information about the event, such as:
+When an event occurs, the browser creates an **event object** and passes it as an argument to the event handler function.
+The event object contains information about the event, such as:
 
 - `target`: The element that triggered the event.
 - `type`: The type of event that occurred (e.g., `"click"`, `"mouseover"`).
@@ -114,32 +123,8 @@ button4.addEventListener("click", (event) => {
 });
 ```
 
-## Event Bubbling and Capturing
-
-When an event occurs on an element, it can propagate up the DOM tree to its parent elements. This is called **event bubbling**.
-
-For example, if you click on a button inside a `<div>`, the click event will first be handled by the button, then by the `<div>`, and then by the `<body>`, and so on, up to the `document`.
-
-You can stop event bubbling using the `stopPropagation()` method of the event object:
-
-```javascript
-const button5 = document.querySelector("#myButton");
-const div = document.querySelector("#myDiv");
-
-button5.addEventListener("click", (event) => {
-  console.log("Button clicked!");
-  event.stopPropagation(); // Stop the event from bubbling up to the div
-});
-
-div.addEventListener("click", () => {
-  console.log("Div clicked!");
-});
-```
-
-In this example, when you click on the button, only the "Button clicked!" message will be logged. The "Div clicked!" message will not be logged because the `stopPropagation()` method prevents the event from bubbling up to the `<div>`.
-
-**Event Capturing** is the opposite of bubbling. With capturing, the event is first captured by the outermost element and then propagates down to the target element. Capturing is less commonly used than bubbling.
-
 ## Practice and Explore
 
-Events are the key to creating interactive web pages. Practice attaching event listeners to different elements and responding to different events. Experiment with the event object and event bubbling. The more you work with events, the better you'll understand how to create engaging and responsive user experiences.
+Events are the key to creating interactive web pages.
+Practice attaching event listeners to different elements and responding to different events.
+The more you work with events, the better you'll understand how to create engaging and responsive user experiences.
