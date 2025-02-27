@@ -76,10 +76,13 @@ export default function HomePage() {
             <BookAIcon className="size-4" />
             Fundamentals
           </Link>
-          <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
+          <Link
+            href="/docs/front-end"
+            className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300"
+          >
             <PanelsTopLeftIcon className="size-4" />
-            Frontend (soon)
-          </div>
+            Frontend
+          </Link>
           <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
             <ServerIcon className="size-4" />
             Backend (soon)
