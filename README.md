@@ -12,7 +12,10 @@ Learn The Web is a modern documentation platform designed to help people underst
    - IP Addresses and DNS
    - URLs
    - HTTP and HTTPS
-2. **Front-End Development** (Coming Soon): User interface development
+2. **Front-End Development**: User interface development covering:
+   - HTML
+   - CSS
+   - JavaScript
 3. **Back-End Development** (Coming Soon): Server-side logic
 4. **Advanced Concepts** (Coming Soon): Production-level skills
 
