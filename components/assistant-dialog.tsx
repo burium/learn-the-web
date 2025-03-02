@@ -37,6 +37,7 @@ import {
   TrashIcon,
   UserIcon,
   ZapIcon,
+  SquareIcon,
 } from "lucide-react";
 
 // Time formatter for chat messages - using Intl API for localization
@@ -63,6 +64,7 @@ export default function AssistantDialog({ api }: { api: string }) {
     handleSubmit,
     status,
     setInput,
+    stop,
   } = useChat({
     api,
     experimental_throttle: 50,
@@ -173,7 +175,7 @@ export default function AssistantDialog({ api }: { api: string }) {
   // Initial welcome screen with example questions
   const EmptyChatState = useMemo(
     () => (
-      <div className="flex items-start justify-center p-4">
+      <div className="flex items-start justify-center p-4 mt-8">
         <div className="text-center space-y-4">
           <h3 className="text-lg font-medium">
             Welcome to the Learn The Web Assistant
@@ -224,7 +226,7 @@ export default function AssistantDialog({ api }: { api: string }) {
     () => (
       <ScrollArea
         viewportRef={viewportRef}
-        className="flex-1 overflow-y-auto h-[512px] mt-4"
+        className="flex-1 overflow-y-auto h-[512px]"
       >
         {messages.length === 0 ? (
           EmptyChatState
@@ -311,13 +313,23 @@ export default function AssistantDialog({ api }: { api: string }) {
             placeholder="Ask about web development..."
             className="flex-1 w-0 py-3 text-base focus-visible:ring-0 outline-none border-0 h-11 shadow-none"
           />
-          <button
-            type="submit"
-            className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
-            disabled={isLoading || !input.trim()}
-          >
-            <CornerDownLeftIcon className="size-4" />
-          </button>
+          {isLoading ? (
+            <button
+              type="button"
+              onClick={stop}
+              className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5 text-fd-destructive hover:text-fd-destructive"
+            >
+              <SquareIcon className="size-4" />
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
+              disabled={isLoading || !input.trim()}
+            >
+              <CornerDownLeftIcon className="size-4" />
+            </button>
+          )}
         </form>
       </div>
     ),
@@ -328,6 +340,7 @@ export default function AssistantDialog({ api }: { api: string }) {
       isLoading,
       messages.length,
       TokenUsageFooter,
+      stop,
     ],
   );
 
