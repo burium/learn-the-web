@@ -31,7 +31,6 @@ import {
   CornerDownLeftIcon,
   FileCodeIcon,
   GlobeIcon,
-  LayoutPanelTopIcon,
   Loader2Icon,
   MousePointerClickIcon,
   SparklesIcon,
