@@ -15,10 +15,13 @@ const MemoizedMarkdownBlock = memo(
         components={{
           pre: ({ children }) => {
             if (!isValidElement(children)) return null;
-            const childProps = children.props as { className?: string; children?: string };
-            const lang = childProps.className?.match(/language-(\w+)/)?.[1] || "";
-            const code = childProps.children || "";
-            
+            const childProps = children.props as {
+              className?: string;
+              children?: string;
+            };
+            const lang = childProps.className?.replace("language-", "") || "";
+            const code = childProps.children?.trim();
+
             if (!code) return null;
             return <DynamicCodeBlock lang={lang} code={code} />;
           },
