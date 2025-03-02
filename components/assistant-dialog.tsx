@@ -29,7 +29,11 @@ import { MemoizedMarkdown } from "@/components/memoized-markdown";
 
 import {
   CornerDownLeftIcon,
+  FileCodeIcon,
+  GlobeIcon,
+  LayoutPanelTopIcon,
   Loader2Icon,
+  MousePointerClickIcon,
   SparklesIcon,
   UserIcon,
 } from "lucide-react";
@@ -45,10 +49,11 @@ export default function AssistantDialog({ api }: { api: string }) {
   const [open, setOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const { messages, input, handleInputChange, handleSubmit, status } = useChat({
-    api,
-    experimental_throttle: 50,
-  });
+  const { messages, input, handleInputChange, handleSubmit, status, setInput } =
+    useChat({
+      api,
+      experimental_throttle: 50,
+    });
   const isLoading = status === "submitted" || status === "streaming";
 
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -90,6 +95,20 @@ export default function AssistantDialog({ api }: { api: string }) {
     }
   }, [messages, scrollToBottom]);
 
+  // Handle submitting example questions
+  const submitExample = useCallback(
+    (text: string) => {
+      setInput(text);
+      // Use setTimeout to ensure the input is set before submitting
+      setTimeout(() => {
+        const formEvent = new Event("submit", { bubbles: true });
+        const form = document.querySelector("form");
+        if (form) form.dispatchEvent(formEvent);
+      }, 0);
+    },
+    [setInput],
+  );
+
   // Memoized components to prevent unnecessary re-renders
   const TriggerButton = useMemo(
     () => (
@@ -114,15 +133,40 @@ export default function AssistantDialog({ api }: { api: string }) {
             development topic.
             <br /> Your chat history is not saved between sessions.
           </p>
-          <p className="text-xs text-fd-muted-foreground">
+          <p className="text-xs text-fd-muted-foreground hidden sm:block">
             Tip: Press{" "}
             <kbd className="px-1 py-0.5 bg-fd-muted rounded">Ctrl+/</kbd>{" "}
             anytime to open this assistant
           </p>
+          <div className="absolute bottom-0 right-0 w-full">
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <button
+                className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
+                onClick={() => submitExample("Explain how CSS selectors work")}
+              >
+                <MousePointerClickIcon className="size-4" />
+                Explain CSS selectors
+              </button>
+              <button
+                className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
+                onClick={() => submitExample("How Internet works ?")}
+              >
+                <GlobeIcon className="size-4" />
+                How Internet works ?
+              </button>
+              <button
+                className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
+                onClick={() => submitExample("Explain the JavaScript basics")}
+              >
+                <FileCodeIcon className="size-4" />
+                JavaScript basics
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     ),
-    [],
+    [submitExample],
   );
 
   const ChatUI = useMemo(
@@ -205,6 +249,7 @@ export default function AssistantDialog({ api }: { api: string }) {
           )}
         </div>
         <Input
+          autoFocus
           value={input}
           onChange={handleInputChange}
           placeholder="Ask about web development..."
@@ -228,7 +273,7 @@ export default function AssistantDialog({ api }: { api: string }) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>{TriggerButton}</DialogTrigger>
         <DialogContent className="sm:max-w-screen-sm bg-fd-popover rounded-xl">
-          <DialogHeader className="pb-4">
+          <DialogHeader>
             <DialogTitle>Learn The Web Assistant</DialogTitle>
             <DialogDescription>
               Answers from AI may be inaccurate, please verify the information.
@@ -244,8 +289,8 @@ export default function AssistantDialog({ api }: { api: string }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{TriggerButton}</DrawerTrigger>
-      <DrawerContent className="bg-fd-popover h-full">
-        <DrawerHeader className="pb-4">
+      <DrawerContent className="bg-fd-popover h-[70vh]">
+        <DrawerHeader>
           <DrawerTitle>Learn The Web Assistant</DrawerTitle>
           <DrawerDescription>
             Answers from AI may be inaccurate, please verify the information.
