@@ -46,7 +46,9 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 
 export default function AssistantDialog({ api }: { api: string }) {
   const [open, setOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 768px)", {
+    initializeWithValue: false,
+  });
 
   const { messages, input, handleInputChange, handleSubmit, status, setInput } =
     useChat({
