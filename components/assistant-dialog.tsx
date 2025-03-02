@@ -35,6 +35,7 @@ import {
   MousePointerClickIcon,
   SparklesIcon,
   UserIcon,
+  ZapIcon,
 } from "lucide-react";
 
 // Memoized formatter to avoid recreating on every render
@@ -49,11 +50,15 @@ export default function AssistantDialog({ api }: { api: string }) {
   const isDesktop = useMediaQuery("(min-width: 768px)", {
     initializeWithValue: false,
   });
+  const [tokenUsage, setTokenUsage] = useState(0);
 
   const { messages, input, handleInputChange, handleSubmit, status, setInput } =
     useChat({
       api,
       experimental_throttle: 50,
+      onFinish: ({}, { usage }) => {
+        setTokenUsage(usage.totalTokens);
+      },
     });
   const isLoading = status === "submitted" || status === "streaming";
 
@@ -120,6 +125,21 @@ export default function AssistantDialog({ api }: { api: string }) {
       </div>
     ),
     [],
+  );
+
+  const TokenUsageDisplay = useMemo(
+    () => (
+      <div className="flex items-center text-xs text-fd-muted-foreground gap-1">
+        <ZapIcon
+          className={cn("size-3.5", tokenUsage > 2560 && "animate-pulse")}
+        />
+        <span>{tokenUsage} tokens used</span>
+        <span className="text-fd-muted-foreground/80">
+          / 2560 max {tokenUsage > 2560 && "(exceeded)"}
+        </span>
+      </div>
+    ),
+    [tokenUsage],
   );
 
   const EmptyChatState = useMemo(
@@ -238,35 +258,45 @@ export default function AssistantDialog({ api }: { api: string }) {
 
   const chatFooter = useMemo(
     () => (
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-row items-center gap-2 w-full border border-fd-border px-3 rounded-lg shadow-sm"
-      >
-        <div className="relative size-4">
-          {isLoading ? (
-            <Loader2Icon className="absolute animate-spin size-full text-fd-muted-foreground" />
-          ) : (
-            <SparklesIcon className="absolute size-full text-fd-muted-foreground" />
-          )}
-        </div>
-        <Input
-          autoFocus
-          value={input}
-          onChange={handleInputChange}
-          placeholder="Ask about web development..."
-          className="flex-1 w-0 py-3 text-base focus-visible:ring-0 outline-none border-0 h-11 shadow-none"
-          disabled={isLoading}
-        />
-        <button
-          type="submit"
-          className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
-          disabled={isLoading || !input.trim()}
+      <div className="space-y-2 w-full">
+        {messages.length > 0 && TokenUsageDisplay}
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-row items-center gap-2 w-full border border-fd-border px-3 rounded-lg shadow-sm"
         >
-          <CornerDownLeftIcon className="size-4" />
-        </button>
-      </form>
+          <div className="relative size-4">
+            {isLoading ? (
+              <Loader2Icon className="absolute animate-spin size-full text-fd-muted-foreground" />
+            ) : (
+              <SparklesIcon className="absolute size-full text-fd-muted-foreground" />
+            )}
+          </div>
+          <Input
+            autoFocus
+            value={input}
+            onChange={handleInputChange}
+            placeholder="Ask about web development..."
+            className="flex-1 w-0 py-3 text-base focus-visible:ring-0 outline-none border-0 h-11 shadow-none"
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
+            disabled={isLoading || !input.trim()}
+          >
+            <CornerDownLeftIcon className="size-4" />
+          </button>
+        </form>
+      </div>
     ),
-    [handleSubmit, input, handleInputChange, isLoading],
+    [
+      handleSubmit,
+      input,
+      handleInputChange,
+      isLoading,
+      messages.length,
+      TokenUsageDisplay,
+    ],
   );
 
   if (isDesktop) {
