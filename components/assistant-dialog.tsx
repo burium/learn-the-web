@@ -295,11 +295,12 @@ export default function AssistantDialog({ api }: { api: string }) {
           </div>
           <Input
             autoFocus
+            disabled={isLoading}
             value={input}
             onChange={handleInputChange}
+            maxLength={100}
             placeholder="Ask about web development..."
             className="flex-1 w-0 py-3 text-base focus-visible:ring-0 outline-none border-0 h-11 shadow-none"
-            disabled={isLoading}
           />
           <button
             type="submit"
