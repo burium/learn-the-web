@@ -34,6 +34,7 @@ import {
   Loader2Icon,
   MousePointerClickIcon,
   SparklesIcon,
+  TrashIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
@@ -52,14 +53,21 @@ export default function AssistantDialog({ api }: { api: string }) {
   });
   const [tokenUsage, setTokenUsage] = useState(0);
 
-  const { messages, input, handleInputChange, handleSubmit, status, setInput } =
-    useChat({
-      api,
-      experimental_throttle: 50,
-      onFinish: ({}, { usage }) => {
-        setTokenUsage(usage.totalTokens);
-      },
-    });
+  const {
+    messages,
+    setMessages,
+    input,
+    handleInputChange,
+    handleSubmit,
+    status,
+    setInput,
+  } = useChat({
+    api,
+    experimental_throttle: 50,
+    onFinish: ({}, { usage }) => {
+      setTokenUsage(usage.totalTokens);
+    },
+  });
   const isLoading = status === "submitted" || status === "streaming";
 
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -115,6 +123,11 @@ export default function AssistantDialog({ api }: { api: string }) {
     [setInput],
   );
 
+  const clearChat = useCallback(() => {
+    setTokenUsage(0);
+    setMessages([]);
+  }, [setTokenUsage, setMessages]);
+
   // Memoized components to prevent unnecessary re-renders
   const TriggerButton = useMemo(
     () => (
@@ -127,19 +140,28 @@ export default function AssistantDialog({ api }: { api: string }) {
     [],
   );
 
-  const TokenUsageDisplay = useMemo(
+  const TokenUsageFooter = useMemo(
     () => (
-      <div className="flex items-center text-xs text-fd-muted-foreground gap-1">
-        <ZapIcon
-          className={cn("size-3.5", tokenUsage > 2560 && "animate-pulse")}
-        />
-        <span>{tokenUsage} tokens used</span>
-        <span className="text-fd-muted-foreground/80">
-          / 2560 max {tokenUsage > 2560 && "(exceeded)"}
-        </span>
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center text-xs text-fd-muted-foreground gap-1">
+          <ZapIcon
+            className={cn("size-3.5", tokenUsage > 2560 && "animate-pulse")}
+          />
+          <span>{tokenUsage} tokens used</span>
+          <span className="text-fd-muted-foreground/80">
+            / 2560 max {tokenUsage > 2560 && "(exceeded)"}
+          </span>
+        </div>
+        <button
+          onClick={clearChat}
+          className="text-xs flex items-center gap-1 text-fd-muted-foreground hover:text-fd-foreground transition-colors"
+        >
+          <TrashIcon className="size-3.5" />
+          Clear chat
+        </button>
       </div>
     ),
-    [tokenUsage],
+    [tokenUsage, clearChat],
   );
 
   const EmptyChatState = useMemo(
@@ -160,7 +182,7 @@ export default function AssistantDialog({ api }: { api: string }) {
             anytime to open this assistant
           </p>
           <div className="absolute bottom-0 right-0 w-full">
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
+            <div className="grid sm:grid-cols-3 gap-4 text-sm">
               <button
                 className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
                 onClick={() => submitExample("Explain how CSS selectors work")}
@@ -259,7 +281,7 @@ export default function AssistantDialog({ api }: { api: string }) {
   const chatFooter = useMemo(
     () => (
       <div className="space-y-2 w-full">
-        {messages.length > 0 && TokenUsageDisplay}
+        {messages.length > 0 && TokenUsageFooter}
         <form
           onSubmit={handleSubmit}
           className="flex flex-row items-center gap-2 w-full border border-fd-border px-3 rounded-lg shadow-sm"
@@ -295,7 +317,7 @@ export default function AssistantDialog({ api }: { api: string }) {
       handleInputChange,
       isLoading,
       messages.length,
-      TokenUsageDisplay,
+      TokenUsageFooter,
     ],
   );
 
@@ -320,7 +342,7 @@ export default function AssistantDialog({ api }: { api: string }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{TriggerButton}</DrawerTrigger>
-      <DrawerContent className="bg-fd-popover h-[70vh]">
+      <DrawerContent className="bg-fd-popover min-h-[70vh]">
         <DrawerHeader>
           <DrawerTitle>Learn The Web Assistant</DrawerTitle>
           <DrawerDescription>
