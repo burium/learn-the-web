@@ -78,6 +78,19 @@ export default function AssistantDialog({ api }: { api: string }) {
     },
   });
   const isLoading = status === "submitted" || status === "streaming";
+  const isTokenLimitReached = useMemo(() => tokenUsage >= 2560, [tokenUsage]);
+
+  // Wrap the original handleSubmit to prevent submission if token limit is reached
+  const handleSubmitWithTokenCheck = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      if (isTokenLimitReached) {
+        e.preventDefault();
+        return;
+      }
+      handleSubmit(e);
+    },
+    [handleSubmit, isTokenLimitReached],
+  );
 
   // Reference for auto-scrolling chat container
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -127,6 +140,8 @@ export default function AssistantDialog({ api }: { api: string }) {
   // Process and submit example questions
   const submitExample = useCallback(
     (text: string) => {
+      if (isTokenLimitReached) return;
+
       setInput(text);
       // Use setTimeout to ensure the input is set before submitting
       setTimeout(() => {
@@ -135,7 +150,7 @@ export default function AssistantDialog({ api }: { api: string }) {
         if (form) form.dispatchEvent(formEvent);
       }, 0);
     },
-    [setInput],
+    [setInput, isTokenLimitReached],
   );
 
   // Reset chat history and token usage counter
@@ -162,11 +177,11 @@ export default function AssistantDialog({ api }: { api: string }) {
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center text-xs text-fd-muted-foreground gap-1">
           <ZapIcon
-            className={cn("size-3.5", tokenUsage > 2560 && "animate-pulse")}
+            className={cn("size-3.5", isTokenLimitReached && "animate-pulse")}
           />
           <span>{tokenUsage} tokens used</span>
           <span className="text-fd-muted-foreground/80">
-            / 2560 max {tokenUsage > 2560 && "(exceeded)"}
+            / 2560 max {isTokenLimitReached && "(exceeded)"}
           </span>
         </div>
         <button
@@ -178,7 +193,7 @@ export default function AssistantDialog({ api }: { api: string }) {
         </button>
       </div>
     ),
-    [tokenUsage, clearChat],
+    [tokenUsage, clearChat, isTokenLimitReached],
   );
 
   // Initial welcome screen with example questions
@@ -328,7 +343,7 @@ export default function AssistantDialog({ api }: { api: string }) {
       <div className="space-y-2 w-full">
         {messages.length > 0 && TokenUsageFooter}
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitWithTokenCheck}
           className="flex flex-row items-center gap-2 w-full border border-fd-border px-3 rounded-lg shadow-sm"
         >
           <div className="relative size-4">
@@ -340,11 +355,15 @@ export default function AssistantDialog({ api }: { api: string }) {
           </div>
           <Input
             autoFocus
-            disabled={isLoading}
+            disabled={isLoading || isTokenLimitReached}
             value={input}
             onChange={handleInputChange}
             maxLength={100}
-            placeholder="Ask about web development..."
+            placeholder={
+              isTokenLimitReached
+                ? "Token limit reached..."
+                : "Ask about web development..."
+            }
             className="flex-1 w-0 py-3 text-base focus-visible:ring-0 outline-none border-0 h-11 shadow-none"
           />
           {isLoading ? (
@@ -359,7 +378,7 @@ export default function AssistantDialog({ api }: { api: string }) {
             <button
               type="submit"
               className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
-              disabled={isLoading || !input.trim()}
+              disabled={isLoading || !input.trim() || isTokenLimitReached}
             >
               <CornerDownLeftIcon className="size-4" />
             </button>
@@ -368,13 +387,14 @@ export default function AssistantDialog({ api }: { api: string }) {
       </div>
     ),
     [
-      handleSubmit,
+      handleSubmitWithTokenCheck,
       input,
       handleInputChange,
       isLoading,
       messages.length,
       TokenUsageFooter,
       stop,
+      isTokenLimitReached,
     ],
   );
 
