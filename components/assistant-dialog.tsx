@@ -239,7 +239,7 @@ export default function AssistantDialog({ api }: { api: string }) {
     () => (
       <ScrollArea
         viewportRef={viewportRef}
-        className="flex-1 overflow-y-auto h-[512px]"
+        className="flex-1 overflow-y-auto h-[512px] px-4 mb-4 sm:px-0 sm:mb-0"
       >
         {messages.length === 0 ? (
           EmptyChatState
@@ -343,7 +343,6 @@ export default function AssistantDialog({ api }: { api: string }) {
             )}
           </div>
           <Input
-            autoFocus
             disabled={isLoading || isTokenLimitReached}
             value={input}
             onChange={handleInputChange}
@@ -429,7 +428,7 @@ export default function AssistantDialog({ api }: { api: string }) {
             Answers may be inaccurate, please verify information.
           </DrawerDescription>
         </DrawerHeader>
-        <div className="px-4 pb-4 flex-1">{ChatUI}</div>
+        {ChatUI}
         <DrawerFooter className="pt-0">{chatFooter}</DrawerFooter>
       </DrawerContent>
     </Drawer>
