@@ -147,11 +147,11 @@ export default function AssistantDialog({ api }: { api: string }) {
 
   const TriggerButton = useMemo(
     () => (
-      <div className="fixed bottom-5 right-5 focus-visible:outline-none">
+      <button className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 focus-visible:outline-none cursor-pointer">
         <div className="bg-fd-accent p-2 rounded-full">
           <SparklesIcon className="size-4" />
         </div>
-      </div>
+      </button>
     ),
     [],
   );
