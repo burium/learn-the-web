@@ -104,11 +104,8 @@ export default function AssistantDialog({ api }: { api: string }) {
   const scrollToBottom = useCallback(() => {
     if (viewportRef.current) {
       const scrollElement = viewportRef.current;
-      requestAnimationFrame(() => {
-        scrollElement.scrollTo({
-          top: scrollElement.scrollHeight,
-          behavior: "smooth",
-        });
+      scrollElement.scrollTo({
+        top: scrollElement.scrollHeight,
       });
     }
   }, []);
@@ -116,9 +113,16 @@ export default function AssistantDialog({ api }: { api: string }) {
   // Auto-scroll when new messages are added
   useEffect(() => {
     if (messages.length > 0) {
+      // Immediate scroll for new user messages
       scrollToBottom();
+
+      // For streaming AI responses, continuously scroll as content grows
+      if (status === "streaming") {
+        const interval = setInterval(scrollToBottom, 100);
+        return () => clearInterval(interval);
+      }
     }
-  }, [messages, scrollToBottom]);
+  }, [messages, scrollToBottom, status]);
 
   // Process and submit example questions
   const submitExample = useCallback(
