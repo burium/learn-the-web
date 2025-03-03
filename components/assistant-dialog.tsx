@@ -51,7 +51,7 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 
 export default function AssistantDialog({ api }: { api: string }) {
   const [open, setOpen] = useState(false);
-  const isDesktop = useMediaQuery("(min-width: 768px)", {
+  const isDesktop = useMediaQuery("(min-width: 640px)", {
     initializeWithValue: false,
   });
   const [tokenUsage, setTokenUsage] = useState(0);
