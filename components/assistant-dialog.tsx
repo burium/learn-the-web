@@ -43,7 +43,6 @@ import {
 } from "lucide-react";
 import { Logo } from "@/lib/icons";
 
-// Time formatter for chat messages - using Intl API for localization
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   hour: "numeric",
   minute: "numeric",
@@ -52,13 +51,11 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 
 export default function AssistantDialog({ api }: { api: string }) {
   const [open, setOpen] = useState(false);
-  // Detect device type for responsive UI rendering
   const isDesktop = useMediaQuery("(min-width: 768px)", {
     initializeWithValue: false,
   });
   const [tokenUsage, setTokenUsage] = useState(0);
 
-  // AI chat integration with the API endpoint
   const {
     messages,
     setMessages,
@@ -80,7 +77,6 @@ export default function AssistantDialog({ api }: { api: string }) {
   const isLoading = status === "submitted" || status === "streaming";
   const isTokenLimitReached = useMemo(() => tokenUsage >= 2560, [tokenUsage]);
 
-  // Wrap the original handleSubmit to prevent submission if token limit is reached
   const handleSubmitWithTokenCheck = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       if (isTokenLimitReached) {
@@ -92,15 +88,12 @@ export default function AssistantDialog({ api }: { api: string }) {
     [handleSubmit, isTokenLimitReached],
   );
 
-  // Reference for auto-scrolling chat container
   const viewportRef = useRef<HTMLDivElement>(null);
 
-  // Format timestamp for chat messages
   const formatTime = useCallback((date: Date) => {
     return timeFormatter.format(date);
   }, []);
 
-  // Register Ctrl+/ keyboard shortcut to open the assistant
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "/") {
@@ -113,7 +106,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Helper function to scroll chat to the latest message
   const scrollToBottom = useCallback(() => {
     if (viewportRef.current) {
       const scrollElement = viewportRef.current;
@@ -123,13 +115,10 @@ export default function AssistantDialog({ api }: { api: string }) {
     }
   }, []);
 
-  // Auto-scroll when new messages are added
   useEffect(() => {
     if (messages.length > 0) {
-      // Immediate scroll for new user messages
       scrollToBottom();
 
-      // For streaming AI responses, continuously scroll as content grows
       if (status === "streaming") {
         const interval = setInterval(scrollToBottom, 100);
         return () => clearInterval(interval);
@@ -137,13 +126,11 @@ export default function AssistantDialog({ api }: { api: string }) {
     }
   }, [messages, scrollToBottom, status]);
 
-  // Process and submit example questions
   const submitExample = useCallback(
     (text: string) => {
       if (isTokenLimitReached) return;
 
       setInput(text);
-      // Use setTimeout to ensure the input is set before submitting
       setTimeout(() => {
         const formEvent = new Event("submit", { bubbles: true });
         const form = document.querySelector("form");
@@ -153,13 +140,11 @@ export default function AssistantDialog({ api }: { api: string }) {
     [setInput, isTokenLimitReached],
   );
 
-  // Reset chat history and token usage counter
   const clearChat = useCallback(() => {
     setTokenUsage(0);
     setMessages([]);
   }, [setTokenUsage, setMessages]);
 
-  // Fixed assistant trigger button that appears in bottom-right corner
   const TriggerButton = useMemo(
     () => (
       <div className="fixed bottom-5 right-5 focus-visible:outline-none">
@@ -171,7 +156,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     [],
   );
 
-  // Token usage display and chat clear button
   const TokenUsageFooter = useMemo(
     () => (
       <div className="flex items-center justify-between w-full">
@@ -196,7 +180,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     [tokenUsage, clearChat, isTokenLimitReached],
   );
 
-  // Initial welcome screen with example questions
   const EmptyChatState = useMemo(
     () => (
       <div className="flex items-start justify-center p-4 sm:mt-8">
@@ -245,7 +228,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     [submitExample],
   );
 
-  // Main chat interface with message history
   const ChatUI = useMemo(
     () => (
       <ScrollArea
@@ -337,7 +319,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     [messages, formatTime, EmptyChatState, error],
   );
 
-  // Chat input form and token usage display
   const chatFooter = useMemo(
     () => (
       <div className="space-y-2 w-full">
@@ -398,7 +379,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     ],
   );
 
-  // Render modal dialog for desktop
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
@@ -423,7 +403,6 @@ export default function AssistantDialog({ api }: { api: string }) {
     );
   }
 
-  // Render drawer for mobile
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{TriggerButton}</DrawerTrigger>
