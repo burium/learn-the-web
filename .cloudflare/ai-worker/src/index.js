@@ -55,7 +55,11 @@ app.post("/api/assistant", async (c) => {
 
   const workersai = createWorkersAI({
     binding: c.env.AI,
-    gateway: "learn-the-web",
+    gateway: {
+      id: "learn-the-web",
+      skipCache: false,
+      cacheTtl: 3360,
+    },
   });
   const model = workersai("@cf/meta/llama-3.1-8b-instruct-fp8-fast");
 
