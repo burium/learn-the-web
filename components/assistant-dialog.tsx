@@ -38,6 +38,8 @@ import {
   UserIcon,
   ZapIcon,
   SquareIcon,
+  AlertTriangleIcon,
+  RefreshCwIcon,
 } from "lucide-react";
 import { Logo } from "@/lib/icons";
 
@@ -66,6 +68,8 @@ export default function AssistantDialog({ api }: { api: string }) {
     status,
     setInput,
     stop,
+    error,
+    reload,
   } = useChat({
     api,
     experimental_throttle: 50,
@@ -282,11 +286,36 @@ export default function AssistantDialog({ api }: { api: string }) {
                 </div>
               );
             })}
+            {error && (
+              <div className="flex items-start gap-3 justify-start">
+                <div className="bg-red-500 p-2 rounded-full h-min hidden sm:block">
+                  <AlertTriangleIcon className="size-4 text-white" />
+                </div>
+                <div className="flex flex-col max-w-full sm:max-w-[calc(100%-3.75rem)] items-start">
+                  <div className="block w-full rounded-lg px-4 py-2 text-sm bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200">
+                    <div className="font-medium">Error</div>
+                    <p className="mt-1">
+                      {error.message ||
+                        "Something went wrong with your request."}
+                    </p>
+                    <button
+                      onClick={() => reload()}
+                      className="mt-2 inline-flex items-center text-xs font-medium text-red-700 dark:text-red-300 hover:text-red-800 dark:hover:text-red-200"
+                    >
+                      <RefreshCwIcon className="mr-1 size-3" /> Try again
+                    </button>
+                  </div>
+                  <div className="text-xs text-fd-muted-foreground mt-1">
+                    {formatTime(new Date())} <span>· System</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </ScrollArea>
     ),
-    [messages, formatTime, EmptyChatState],
+    [messages, formatTime, EmptyChatState, error],
   );
 
   // Chat input form and token usage display
