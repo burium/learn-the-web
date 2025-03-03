@@ -180,7 +180,7 @@ export default function AssistantDialog({ api }: { api: string }) {
   // Initial welcome screen with example questions
   const EmptyChatState = useMemo(
     () => (
-      <div className="flex items-start justify-center p-4 mt-8">
+      <div className="flex items-start justify-center p-4 sm:mt-8">
         <div className="text-center space-y-4">
           <h3 className="text-lg font-medium">
             Welcome to the Learn The Web Assistant
@@ -195,8 +195,8 @@ export default function AssistantDialog({ api }: { api: string }) {
             <kbd className="px-1 py-0.5 bg-fd-muted rounded">Ctrl+/</kbd>{" "}
             anytime to open this assistant
           </p>
-          <div className="absolute bottom-0 right-0 w-full">
-            <div className="grid sm:grid-cols-3 gap-4 text-sm">
+          <div className="sm:absolute bottom-0 right-0 w-full">
+            <div className="grid sm:grid-cols-3 gap-4 text-sm mt-8">
               <button
                 className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
                 onClick={() => submitExample("Explain how CSS selectors work")}
@@ -403,7 +403,7 @@ export default function AssistantDialog({ api }: { api: string }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>{TriggerButton}</DrawerTrigger>
-      <DrawerContent className="bg-fd-popover min-h-[70vh]">
+      <DrawerContent className="bg-fd-popover">
         <DrawerHeader>
           <div className="flex items-center gap-2">
             <Logo className="size-5" />
@@ -416,9 +416,7 @@ export default function AssistantDialog({ api }: { api: string }) {
             Answers may be inaccurate, please verify information.
           </DrawerDescription>
         </DrawerHeader>
-        <div className="px-4 pb-4 flex-1 flex flex-col overflow-y-auto">
-          {ChatUI}
-        </div>
+        <div className="px-4 pb-4 flex-1">{ChatUI}</div>
         <DrawerFooter className="pt-0">{chatFooter}</DrawerFooter>
       </DrawerContent>
     </Drawer>
