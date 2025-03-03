@@ -147,7 +147,10 @@ export default function AssistantDialog({ api }: { api: string }) {
 
   const TriggerButton = useMemo(
     () => (
-      <button className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 focus-visible:outline-none cursor-pointer">
+      <button
+        aria-label="Trigger Assistant"
+        className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 focus-visible:outline-none cursor-pointer"
+      >
         <div className="bg-fd-accent p-2 rounded-full">
           <SparklesIcon className="size-4" />
         </div>
@@ -169,6 +172,7 @@ export default function AssistantDialog({ api }: { api: string }) {
           </span>
         </div>
         <button
+          aria-label="Clear chat history"
           onClick={clearChat}
           className="text-xs flex items-center gap-1 text-fd-muted-foreground hover:text-fd-foreground transition-colors"
         >
@@ -200,6 +204,7 @@ export default function AssistantDialog({ api }: { api: string }) {
           <div className="sm:absolute bottom-0 right-0 w-full">
             <div className="grid sm:grid-cols-3 gap-4 text-sm mt-8">
               <button
+                aria-label="Example: Explain CSS selectors"
                 className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
                 onClick={() => submitExample("Explain how CSS selectors work")}
               >
@@ -207,6 +212,7 @@ export default function AssistantDialog({ api }: { api: string }) {
                 Explain CSS selectors
               </button>
               <button
+                aria-label="Example: How Internet works"
                 className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
                 onClick={() => submitExample("How Internet works ?")}
               >
@@ -214,6 +220,7 @@ export default function AssistantDialog({ api }: { api: string }) {
                 How Internet works ?
               </button>
               <button
+                aria-label="Example: JavaScript basics"
                 className="flex items-center gap-2 border border-fd-muted p-2 rounded-lg shadow-sm hover:cursor-pointer"
                 onClick={() => submitExample("Explain the JavaScript basics")}
               >
@@ -300,6 +307,7 @@ export default function AssistantDialog({ api }: { api: string }) {
                         "Something went wrong with your request."}
                     </p>
                     <button
+                      aria-label="Try request again"
                       onClick={() => reload()}
                       className="mt-2 inline-flex items-center text-xs font-medium text-red-700 dark:text-red-300 hover:text-red-800 dark:hover:text-red-200"
                     >
@@ -350,6 +358,7 @@ export default function AssistantDialog({ api }: { api: string }) {
           {isLoading ? (
             <button
               type="button"
+              aria-label="Stop generating response"
               onClick={stop}
               className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5 text-fd-destructive hover:text-fd-destructive"
             >
@@ -358,6 +367,7 @@ export default function AssistantDialog({ api }: { api: string }) {
           ) : (
             <button
               type="submit"
+              aria-label="Send message"
               className="inline-flex items-center justify-center rounded-md font-medium transition-colors duration-100 disabled:pointer-events-none disabled:opacity-50 border hover:bg-fd-accent hover:text-fd-accent-foreground text-xs p-1.5"
               disabled={isLoading || !input.trim() || isTokenLimitReached}
             >
