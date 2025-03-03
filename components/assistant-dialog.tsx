@@ -39,6 +39,7 @@ import {
   ZapIcon,
   SquareIcon,
 } from "lucide-react";
+import { Logo } from "@/lib/icons";
 
 // Time formatter for chat messages - using Intl API for localization
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
@@ -351,9 +352,15 @@ export default function AssistantDialog({ api }: { api: string }) {
         <DialogTrigger asChild>{TriggerButton}</DialogTrigger>
         <DialogContent className="sm:max-w-screen-sm bg-fd-popover rounded-xl">
           <DialogHeader>
-            <DialogTitle>Learn The Web Assistant</DialogTitle>
-            <DialogDescription>
-              Answers from AI may be inaccurate, please verify the information.
+            <div className="flex items-center gap-2">
+              <Logo className="size-5" />
+              <DialogTitle>Learn The Web Assistant</DialogTitle>
+              <span className="text-xs bg-fd-foreground text-fd-accent px-2 py-0.5 rounded-full">
+                Beta
+              </span>
+            </div>
+            <DialogDescription className="leading-relaxed">
+              Answers may be inaccurate, please verify information.
             </DialogDescription>
           </DialogHeader>
           {ChatUI}
@@ -369,9 +376,15 @@ export default function AssistantDialog({ api }: { api: string }) {
       <DrawerTrigger asChild>{TriggerButton}</DrawerTrigger>
       <DrawerContent className="bg-fd-popover min-h-[70vh]">
         <DrawerHeader>
-          <DrawerTitle>Learn The Web Assistant</DrawerTitle>
-          <DrawerDescription>
-            Answers from AI may be inaccurate, please verify the information.
+          <div className="flex items-center gap-2">
+            <Logo className="size-5" />
+            <DrawerTitle>Learn The Web Assistant</DrawerTitle>
+            <span className="text-xs bg-fd-foreground text-fd-accent px-2 py-0.5 rounded-full">
+              Beta
+            </span>
+          </div>
+          <DrawerDescription className="leading-relaxed">
+            Answers may be inaccurate, please verify information.
           </DrawerDescription>
         </DrawerHeader>
         <div className="px-4 pb-4 flex-1 flex flex-col overflow-y-auto">
