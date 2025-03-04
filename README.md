@@ -28,6 +28,18 @@ Learn The Web is a modern documentation platform designed to help people underst
 - 🎨 Clean and modern UI powered by Fumadocs
 - ⚡ Fast and SEO-friendly with Next.js
 - 📝 Easy-to-follow structured learning path
+- 🤖 AI Assistant to help answer web development questions
+
+## AI Assistant
+
+The platform includes an interactive AI Assistant that:
+
+- Answers questions about web development topics
+- Provides explanations for HTML, CSS, JavaScript concepts
+- Is accessible via a floating button or keyboard shortcut (Ctrl+/)
+- Features a chat-like interface with markdown support
+- Includes example prompts for new users
+- Tracks token usage for transparency
 
 ## Tech Stack
 
@@ -36,6 +48,7 @@ Learn The Web is a modern documentation platform designed to help people underst
 - [Tailwind CSS](https://tailwindcss.com/) - Styling
 - [MDX](https://mdxjs.com/) - Markdown with JSX
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [AI SDK](https://ai.vercel.ai/) - AI functionality
 
 ## Project Structure
 
@@ -48,6 +61,7 @@ learn-the-web/
 │   │   └── search/         # Search functionality
 │   └── docs/               # Documentation pages
 ├── components/             # React components
+│   └── assistant-dialog.tsx # AI Assistant component
 ├── content/               # MDX documentation content
 │   └── docs/             # Organized content sections
 ├── lib/                  # Utility functions
