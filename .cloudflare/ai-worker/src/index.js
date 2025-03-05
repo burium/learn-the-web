@@ -137,7 +137,7 @@ function calculateTermFrequency(text) {
  *
  * @route POST /api/analyze
  * @param {object} c - Hono context object containing request/response data
- * @returns {object} - JSON response with the top 5 most frequent terms
+ * @returns {object} - JSON response with the top 3 most frequent terms
  */
 app.post("/api/analyze", async (c) => {
   const { text } = await c.req.json();
@@ -148,9 +148,7 @@ app.post("/api/analyze", async (c) => {
 
   try {
     const result = calculateTermFrequency(text);
-    return c.json([
-      result.slice(0, 5), // Return top 5 terms
-    ]);
+    return c.json(result.slice(0, 3));
   } catch (error) {
     return c.json({ error: error.message }, 500);
   }
