@@ -324,7 +324,7 @@ export default function AssistantDialog({ api }: { api: string }) {
         )}
       </ScrollArea>
     ),
-    [messages, formatTime, EmptyChatState, error],
+    [messages, formatTime, EmptyChatState, error, reload],
   );
 
   const chatFooter = useMemo(
