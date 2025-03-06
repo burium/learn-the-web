@@ -1,7 +1,15 @@
 {
-    "title": "III. Back-End Development",
-    "description": "Developing the server-side logic.",
-    "icon": "GraduationCap",
-    "root": true
-  }
-  
+  "title": "III. Back-End Development",
+  "description": "Developing the server-side logic.",
+  "icon": "Server",
+  "root": true,
+  "pages": [
+    "index",
+    "languages",
+    "database",
+    "apis",
+    "frameworks",
+    "auth",
+    "..."
+  ]
+}
