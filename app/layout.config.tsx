@@ -78,8 +78,7 @@ export const baseOptions: BaseLayoutProps = {
           url: "/docs/back-end",
           active: "nested-url",
           menu: {
-            className:
-              "lg:col-start-3 lg:row-start-1 opacity-50 pointer-events-none",
+            className: "lg:col-start-3 lg:row-start-1",
           },
         },
         {
