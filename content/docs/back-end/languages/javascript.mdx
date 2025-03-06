@@ -1,0 +1,74 @@
+---
+title: JavaScript (with Node.js)
+description: Leveraging JavaScript on the Server
+---
+
+You're already familiar with JavaScript from the front-end section, where it's the language of the browser.
+But JavaScript can also be a powerful force on the back-end, thanks to **Node.js**, a runtime environment that allows you to execute JavaScript code outside of a web browser.
+
+## What is Node.js?
+
+Node.js is built on Chrome's V8 JavaScript engine, the same engine that powers the Chrome browser.
+This means you can use the same JavaScript syntax and concepts you already know from front-end development to build server-side applications.
+This "JavaScript everywhere" approach can significantly reduce the learning curve and allow front-end and back-end developers to collaborate more effectively.
+
+## Key Features of Node.js
+
+- **Asynchronous and Event-Driven:** Node.js uses an event-driven, non-blocking I/O model.
+  This means that it can handle multiple requests concurrently without blocking the main thread, making it highly scalable and efficient for real-time applications.
+- **NPM (Node Package Manager):** Node.js has a vast ecosystem of open-source libraries and frameworks available through npm, the Node Package Manager.
+  This makes it easy to find and use pre-built modules for common tasks, saving you time and effort.
+- **JavaScript Everywhere:** As mentioned earlier, using JavaScript on both the front-end and back-end can simplify development and improve collaboration.
+- **Large and Active Community:** Node.js has a large and active community, which means there are plenty of resources, tutorials, and support available.
+
+## When to Use Node.js
+
+Node.js is particularly well-suited for building:
+
+- **Real-time applications:** Chat applications, online games, and collaborative tools that require low latency and high concurrency.
+- **API servers:** Building RESTful APIs for web and mobile applications.
+- **Microservices:** Breaking down a large application into smaller, independent services.
+- **I/O-bound applications:** Applications that spend a lot of time waiting for I/O operations to complete, such as reading from a database or making network requests.
+
+## Popular Node.js Frameworks
+
+Several frameworks can simplify Node.js development:
+
+- **Express.js:** A minimalist and flexible web application framework that provides a robust set of features for building APIs and web applications.
+- **NestJS:** A framework for building efficient, scalable Node.js server-side applications.
+  It uses progressive JavaScript, is built and fully supports TypeScript and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).
+- **Koa:** A lightweight framework created by the team behind Express.js, designed to be more modern and modular.
+
+## Example: Simple Node.js HTTP Server
+
+Here's a simple example of how to create an HTTP server using Node.js:
+
+```javascript
+const http = require('http');
+
+const hostname = '127.0.0.1'; // Localhost
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello, World!\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
+This code creates a basic HTTP server that listens on port 3000 and responds with "Hello, World!" when accessed in a browser.
+
+## Downsides
+
+- **Single-Threaded:** Although Node.js is asynchronous, it runs on a single thread.
+  CPU-intensive tasks can block the event loop and degrade performance.
+  For such tasks, consider using worker threads or another language.
+- **Callback Hell (Potentially):** While promises and async/await help, poorly structured asynchronous code can still lead to complex callback chains.
+- **Rapid Development:** Changes on versions and libraries might be hard to follow.
+
+JavaScript, combined with Node.js, offers a powerful and versatile platform for building back-end applications.
+Its familiar syntax, vast ecosystem, and asynchronous nature make it a popular choice for many developers.
