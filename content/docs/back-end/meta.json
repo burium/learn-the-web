@@ -6,7 +6,7 @@
   "pages": [
     "index",
     "languages",
-    "database",
+    "databases",
     "apis",
     "frameworks",
     "auth",
