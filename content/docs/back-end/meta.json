@@ -8,8 +8,9 @@
     "languages",
     "databases",
     "apis",
-    "frameworks",
     "auth",
+    "frameworks",
+    "web-server",
     "..."
   ]
 }
