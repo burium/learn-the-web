@@ -20,10 +20,10 @@ Each request from the client contains all the information the server needs to fu
 
 1.  **Client-Server Architecture:** A clear separation between the client (front-end) and the server (back-end), allowing them to evolve independently.
 2.  **Statelessness:** Each request from the client to the server must contain all the information needed to understand and process the request.
-  The server does not store any client context between requests.
+    The server does not store any client context between requests.
 3.  **Cacheability:** Responses from the server should be explicitly marked as cacheable or non-cacheable, allowing clients and intermediaries to cache responses to improve performance.
 4.  **Layered System:** The client should not need to know whether it's communicating directly with the end server or with an intermediary along the way.
-  This allows for the use of load balancers, proxies, and other intermediaries without affecting the client.
+    This allows for the use of load balancers, proxies, and other intermediaries without affecting the client.
 5.  **Uniform Interface:** This is the most important principle, and it encompasses several sub-principles:
     - **Identification of Resources:** Each resource should be identified using a unique URI (Uniform Resource Identifier).
     - **Manipulation of Resources Through Representations:** Clients manipulate resources by sending representations (e.g., JSON, XML) to the server.
@@ -61,14 +61,14 @@ RESTful APIs typically use standard data formats for exchanging data between the
 
 Here's an example of how you might design a RESTful API for managing users:
 
-| Method | Endpoint    | Description                                                                | Request Body (Example)                                                                 | Response (Example)                                                                                                                               |
-| ------ | ----------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| GET    | /users      | Retrieves a list of all users.                                             | N/A                                                                                    | `[ { "id": 1, "username": "john.doe", "email": "john.doe@example.com" }, { "id": 2, "username": "jane.doe", "email": "jane.doe@example.com" } ]` |
-| GET    | /users/{id} | Retrieves a specific user with the given ID.                               | N/A                                                                                    | `{ "id": 1, "username": "john.doe", "email": "john.doe@example.com" }`                                                                           |
-| POST   | /users      | Creates a new user.                                                        | `{ "username": "newUser", "email": "new@example.com", "password": "password" }`        | `{ "id": 3, "username": "newUser", "email": "new@example.com" }`                                                                                 |
-| PUT    | /users/{id} | Updates an existing user with the given ID (replaces the entire resource). | `{ "username": "updatedUser", "email": "new@example.com", "password": "newPassword" }` | `{ "id": 1, "username": "updatedUser", "email": "new@example.com" }`                                                                             |
-| PATCH  | /users/{id} | Partially updates an existing user with the given ID.                      | `{ "email": "new@example.com" }`                                                       | `{ "id": 1, "username": "john.doe", "email": "new@example.com" }`                                                                                |
-| DELETE | /users/{id} | Deletes the user with the given ID.                                        | N/A                                                                                    | `204 No Content` (Success, no content returned)                                                                                                  |
+| Method | Endpoint      | Description                                                                | Request Body (Example)                                                                 | Response (Example)                                                                                                                               |
+| ------ | ------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GET    | `/users`      | Retrieves a list of all users.                                             | N/A                                                                                    | `[ { "id": 1, "username": "john.doe", "email": "john.doe@example.com" }, { "id": 2, "username": "jane.doe", "email": "jane.doe@example.com" } ]` |
+| GET    | `/users/{id}` | Retrieves a specific user with the given ID.                               | N/A                                                                                    | `{ "id": 1, "username": "john.doe", "email": "john.doe@example.com" }`                                                                           |
+| POST   | `/users`      | Creates a new user.                                                        | `{ "username": "newUser", "email": "new@example.com", "password": "password" }`        | `{ "id": 3, "username": "newUser", "email": "new@example.com" }`                                                                                 |
+| PUT    | `/users/{id}` | Updates an existing user with the given ID (replaces the entire resource). | `{ "username": "updatedUser", "email": "new@example.com", "password": "newPassword" }` | `{ "id": 1, "username": "updatedUser", "email": "new@example.com" }`                                                                             |
+| PATCH  | `/users/{id}` | Partially updates an existing user with the given ID.                      | `{ "email": "new@example.com" }`                                                       | `{ "id": 1, "username": "john.doe", "email": "new@example.com" }`                                                                                |
+| DELETE | `/users/{id}` | Deletes the user with the given ID.                                        | N/A                                                                                    | `204 No Content` (Success, no content returned)                                                                                                  |
 
 ## Benefits of Using RESTful APIs
 
