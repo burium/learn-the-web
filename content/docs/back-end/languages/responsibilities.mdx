@@ -1,0 +1,89 @@
+---
+title: Core Responsibilities of a Server-Side Language
+description: What Does Your Code Need to Handle?
+---
+
+Now that you've seen several popular server-side languages, let's zoom out and consider the common responsibilities that _all_ of these languages need to handle when building a back-end application.
+Regardless of whether you're writing Python, JavaScript, PHP, Ruby, or Go, your server-side code will typically be responsible for the following tasks:
+
+## Handling Incoming Requests
+
+This is the fundamental task of any server-side application.
+The code needs to:
+
+- **Receive HTTP Requests:** Listen for incoming requests from clients (usually web browsers or mobile apps).
+- **Parse Requests:** Extract information from the request, such as the URL, request method (GET, POST, etc.), headers, and any data sent in the request body.
+
+Different languages and frameworks provide different tools and APIs for handling incoming requests.
+
+## Routing
+
+Once a request has been received and parsed, the server needs to determine what to do with it.
+This is where routing comes in.
+Routing involves mapping URLs to specific functions or handlers within your code.
+
+- **Define Routes:** Specify which code should be executed for different URLs and request methods.
+- **Handle Dynamic Routes:** Support URLs with variables or parameters that need to be extracted and used by the handler.
+
+## Processing Data
+
+A significant portion of back-end code involves processing data.
+This might include:
+
+- **Validating Data:** Ensure that data received from clients is valid and meets the expected format and constraints.
+- **Transforming Data:** Convert data from one format to another (e.g., from JSON to XML).
+- **Performing Calculations:** Execute business logic and calculations based on the data.
+
+## Interacting with Databases
+
+Most web applications require persistent storage for data.
+Server-side languages need to provide mechanisms for interacting with databases:
+
+- **Connecting to Databases:** Establish connections to various types of databases (relational, NoSQL, etc.).
+- **Querying Data:** Retrieve data from the database based on specific criteria.
+- **Updating Data:** Insert, update, and delete data in the database.
+- **Using ORMs (Optional):** Employ Object-Relational Mappers (ORMs) to simplify database interactions by mapping database tables to objects in your code.
+
+## Generating Responses
+
+After processing a request, the server needs to send a response back to the client.
+This involves:
+
+- **Creating HTTP Responses:** Construct a well-formed HTTP response, including a status code (e.g., 200 OK, 404 Not Found) and appropriate headers.
+- **Serializing Data:** Convert data into a format suitable for transmission over the network (e.g., JSON or XML).
+- **Rendering Templates:** Generate HTML code dynamically using a templating engine.
+
+## Handling Authentication and Authorization
+
+Security is paramount for most web applications.
+Back-end code needs to handle:
+
+- **User Authentication:** Verifying the identity of users (e.g., using usernames and passwords).
+- **User Authorization:** Controlling access to resources based on user roles or permissions.
+- **Session Management:** Maintaining user sessions across multiple requests.
+
+## Error Handling
+
+Robust error handling is essential for building reliable applications:
+
+- **Catching Exceptions:** Handle unexpected errors or exceptions that occur during code execution.
+- **Logging Errors:** Record errors to a log file or other monitoring system.
+- **Returning Error Responses:** Send appropriate error responses to the client, including informative error messages.
+
+## Asynchronous Operations
+
+Many server-side tasks, such as database queries or network requests, are asynchronous.
+Server-side languages need to provide mechanisms for handling these operations efficiently without blocking the main thread:
+
+- **Using Threads or Processes:** Spawn new threads or processes to handle long-running tasks in parallel.
+- **Using Asynchronous I/O:** Employ non-blocking I/O operations to handle multiple requests concurrently.
+- **Using Promises or Async/Await:** Simplify asynchronous code with promises or async/await syntax.
+
+## Monitoring and Logging
+
+Monitoring and logging are crucial for tracking the health and performance of your application:
+
+- **Logging Events:** Record important events, such as user actions or system events, to a log file or other monitoring system.
+- **Tracking Performance Metrics:** Monitor key performance indicators (KPIs) such as request latency, CPU usage, and memory usage.
+
+By understanding these core responsibilities, you can better appreciate the challenges and complexities of back-end development, regardless of the specific language or framework you choose.
