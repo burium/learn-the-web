@@ -21,23 +21,19 @@ Understanding how to perform these operations efficiently and securely is essent
 - **Delete (Remove):** Removing records from your database.
   This operation involves deleting rows from a table or documents from a collection.
 
-## CRUD in Relational Databases (SQL)
+## CRUD in Relational Databases
 
 In relational databases, you perform CRUD operations using SQL statements.
 Here are some examples:
 
-### Create (Insert)
-
-```sql
+```sql title="Create (Insert)"
 INSERT INTO users (username, email, password)
 VALUES ('john.doe', 'john.doe@example.com', 'hashed_password');
 ```
 
 This SQL statement inserts a new row into the `users` table with the specified values for the `username`, `email`, and `password` columns.
 
-### Read (Select)
-
-```sql
+```sql title="Read (Select)"
 SELECT user_id, username, email
 FROM users
 WHERE username = 'john.doe';
@@ -45,9 +41,7 @@ WHERE username = 'john.doe';
 
 This SQL statement retrieves the `user_id`, `username`, and `email` columns from the `users` table for the user with the username "john.doe".
 
-### Update (Update)
-
-```sql
+```sql title="Update (Update)"
 UPDATE users
 SET email = 'john.newemail@example.com'
 WHERE user_id = 123;
@@ -55,23 +49,19 @@ WHERE user_id = 123;
 
 This SQL statement updates the `email` column in the `users` table for the user with the `user_id` of 123.
 
-### Delete (Delete)
-
-```sql
+```sql title="Delete (Delete)"
 DELETE FROM users
 WHERE user_id = 123;
 ```
 
 This SQL statement deletes the row from the `users` table for the user with the `user_id` of 123.
 
-## CRUD in NoSQL Databases (Examples)
+## CRUD in NoSQL Databases
 
 NoSQL databases use different query languages and APIs for performing CRUD operations.
 Here are some examples using MongoDB:
 
-### Create (Insert)
-
-```javascript
+```javascript title="Create (Insert)"
 db.users.insertOne({
   username: "john.doe",
   email: "john.doe@example.com",
@@ -81,17 +71,13 @@ db.users.insertOne({
 
 This command inserts a new document into the `users` collection with the specified values.
 
-### Read (Find)
-
-```javascript
+```javascript title="Read (Find)"
 db.users.find({ username: "john.doe" });
 ```
 
 This command retrieves all documents from the `users` collection where the `username` is "john.doe".
 
-### Update (Update)
-
-```javascript
+```javascript title="Update (Update)"
 db.users.updateOne(
   { user_id: 123 },
   { $set: { email: "john.newemail@example.com" } }
@@ -100,9 +86,7 @@ db.users.updateOne(
 
 This command updates the `email` field in the document with the `user_id` of 123.
 
-### Delete (Delete)
-
-```javascript
+```javascript title="Delete (Delete)"
 db.users.deleteOne({ user_id: 123 });
 ```
 
