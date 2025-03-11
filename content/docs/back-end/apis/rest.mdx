@@ -42,7 +42,8 @@ Here are some common examples:
 
 ## HTTP Methods in RESTful APIs
 
-RESTful APIs use HTTP methods to indicate the desired action on a resource:
+RESTful APIs use HTTP methods to indicate the desired action on a resource.
+These methods closely align with common [CRUD](../databases/crud) operations:
 
 - **GET:** Retrieve a resource.
 - **POST:** Create a new resource.
@@ -61,14 +62,14 @@ RESTful APIs typically use standard data formats for exchanging data between the
 
 Here's an example of how you might design a RESTful API for managing users:
 
-| Method | Endpoint      | Description                                                                | Request Body (Example)                                                                 | Response (Example)                                                                                                                               |
-| ------ | ------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| GET    | `/users`      | Retrieves a list of all users.                                             | N/A                                                                                    | `[ { "id": 1, "username": "john.doe", "email": "john.doe@example.com" }, { "id": 2, "username": "jane.doe", "email": "jane.doe@example.com" } ]` |
-| GET    | `/users/{id}` | Retrieves a specific user with the given ID.                               | N/A                                                                                    | `{ "id": 1, "username": "john.doe", "email": "john.doe@example.com" }`                                                                           |
-| POST   | `/users`      | Creates a new user.                                                        | `{ "username": "newUser", "email": "new@example.com", "password": "password" }`        | `{ "id": 3, "username": "newUser", "email": "new@example.com" }`                                                                                 |
-| PUT    | `/users/{id}` | Updates an existing user with the given ID (replaces the entire resource). | `{ "username": "updatedUser", "email": "new@example.com", "password": "newPassword" }` | `{ "id": 1, "username": "updatedUser", "email": "new@example.com" }`                                                                             |
-| PATCH  | `/users/{id}` | Partially updates an existing user with the given ID.                      | `{ "email": "new@example.com" }`                                                       | `{ "id": 1, "username": "john.doe", "email": "new@example.com" }`                                                                                |
-| DELETE | `/users/{id}` | Deletes the user with the given ID.                                        | N/A                                                                                    | `204 No Content` (Success, no content returned)                                                                                                  |
+| Method | Endpoint      | Description                                                                |
+| ------ | ------------- | -------------------------------------------------------------------------- |
+| GET    | `/users`      | Retrieves a list of all users.                                             |
+| GET    | `/users/{id}` | Retrieves a specific user with the given ID.                               |
+| POST   | `/users`      | Creates a new user.                                                        |
+| PUT    | `/users/{id}` | Updates an existing user with the given ID (replaces the entire resource). |
+| PATCH  | `/users/{id}` | Partially updates an existing user with the given ID.                      |
+| DELETE | `/users/{id}` | Deletes the user with the given ID.                                        |
 
 ## Benefits of Using RESTful APIs
 
