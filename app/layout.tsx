@@ -32,6 +32,12 @@ export default function Layout({ children }: { children: ReactNode }) {
       className={`${geistSans.variable} ${geistMono.variable} antialiased scroll-smooth selection:bg-neutral-400/25`}
       suppressHydrationWarning
     >
+      <head>
+        <meta
+          name="google-site-verification"
+          content="mUdyJH0SN3fOxO2DT5J_kAtWgn0gRfUZX1svg6ZwXEY"
+        />
+      </head>
       <body className="flex flex-col min-h-screen">
         <RootProvider>{children}</RootProvider>
         <Analytics />
