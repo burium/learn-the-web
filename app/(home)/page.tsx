@@ -64,7 +64,7 @@ export default function HomePage() {
           </h2>
           <p className="text-sm text-fd-muted-foreground mb-6">
             Choose your path and dive deep into the world of web development.
-            From fundamental concepts to advanced techniques, we've got you
+            From fundamental concepts to advanced techniques, we&apos;ve got you
             covered.
           </p>
         </div>
