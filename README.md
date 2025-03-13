@@ -16,8 +16,13 @@ Learn The Web is a modern documentation platform designed to help people underst
    - HTML
    - CSS
    - JavaScript
-3. **Back-End Development** (Coming Soon): Server-side logic
+3. **Back-End Development**: Server-side logic and API design.
+   - Node.js, Python
+   - Databases (SQL and NoSQL)
+   - Authentication and Authorization
 4. **Advanced Concepts** (Coming Soon): Production-level skills
+
+This project is actively maintained and constantly improved with new content, examples, and features.
 
 ## Features
 
