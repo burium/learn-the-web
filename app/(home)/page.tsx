@@ -57,15 +57,15 @@ export default function HomePage() {
       <div className="bg-fd-background flex flex-col gap-4 border-x border-t px-8 py-16 md:py-24 lg:flex-row md:px-16">
         <div className="shrink-0 flex-1 font-mono text-start">
           <p className="px-2 py-1 text-sm text-fd-muted-foreground hover:bg-fd-primary hover:text-fd-primary-foreground transition-colors ease-out duration-300 font-medium w-fit mb-4">
-            Learn everything you need
+            Your roadmap to success
           </p>
           <h2 className="text-xl font-medium mb-4 sm:text-2xl">
-            One Website for All Your Needs
+            Explore Web Development
           </h2>
           <p className="text-sm text-fd-muted-foreground mb-6">
-            Whether you&apos;re a beginner or an experienced developer, our
-            website has everything you need to learn and grow in the world of
-            web development.
+            Choose your path and dive deep into the world of web development.
+            From fundamental concepts to advanced techniques, we've got you
+            covered.
           </p>
         </div>
         <div className="w-full max-w-lg flex flex-col items-end justify-center gap-4 font-mono">
