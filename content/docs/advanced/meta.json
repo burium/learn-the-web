@@ -1,7 +1,20 @@
 {
-    "title": "IV. Advanced Concepts",
-    "description": "Advanced skills for production environments.",
-    "icon": "Server",
-    "root": true
-  }
-  
+  "title": "IV. Advanced Concepts",
+  "description": "Advanced skills for production environments.",
+  "icon": "Server",
+  "root": true,
+  "pages": [
+    "index",
+    "architectures",
+    "caching",
+    "load-balancing",
+    "containers",
+    "cloud",
+    "deployments",
+    "devops",
+    "version-control",
+    "security",
+    "testing",
+    "..."
+  ]
+}
