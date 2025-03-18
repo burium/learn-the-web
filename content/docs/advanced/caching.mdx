@@ -1,6 +1,6 @@
 ---
 title: Caching Strategies
-description: Boosting Performance and Reducing Load with Caching
+description: Boost performance and reduce load.
 icon: DatabaseZap
 ---
 
@@ -89,26 +89,23 @@ They cache static content (images, CSS, JavaScript) and deliver it to users from
 - Amazon CloudFront
 - Akamai
 
-### 4. Database Caching
-
-Databases often have built-in caching mechanisms to improve query performance.
-They cache frequently accessed data in memory to avoid disk reads.
-
-**Example (MySQL Query Cache):**
-(Note: The MySQL Query Cache was removed in MySQL 8.0, so this is for informational purposes about how DB caching _used_ to work, and the principles remain valid.)
-
-MySQL used to have a query cache that stored the results of SELECT queries.
-If the same query was executed again, the results were served from the cache, avoiding the need to re-execute the query.
-
-### 5. Edge Caching
+### 4. Edge Caching
 
 Edge caching is similar to CDN caching, but it involves caching content at the "edge" of the network, closer to the user.
 This can be done using edge computing devices or specialized edge caching services.
 
-### 6. Object Caching
+### 5. Object Caching
 
-Caching the results of function calls and computation intensive objects.
-This can be applied at many places on the architecture.
+Object caching involves storing the results of computationally expensive operations or frequently accessed objects in memory.
+Instead of recalculating or re-fetching the object every time it's needed, the application retrieves it from the cache.
+This is particularly useful for:
+
+- **Expensive Calculations:** Caching the result of complex calculations to avoid repeating them.
+- **Data Transformations:** Caching the output of data transformations or aggregations.
+- **Frequently Accessed Objects:** Caching frequently used objects to reduce database queries or API calls.
+
+Object caching can be implemented at various levels within an application's architecture, from caching individual function call results to caching entire data structures.
+Libraries such as memoize functions can be utilized for specific function result caching.
 
 ## Caching Strategies
 

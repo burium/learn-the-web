@@ -1,6 +1,6 @@
 ---
 title: Load Balancing
-description: Distributing the Load for High Availability and Scalability
+description: Distributes load for availability and scalability
 icon: Scale
 ---
 
@@ -73,18 +73,40 @@ Here's an example of how to configure load balancing using Nginx:
 
 ```nginx title="nginx.conf"
 http {
-    upstream myapp1 {
-        server appserver1.example.com;
-        server appserver2.example.com;
-        server appserver3.example.com;
-    }
+  # Define a group of backend servers
+  upstream myapp1 {
+    server appserver1.example.com;
+    server appserver2.example.com;
+    server appserver3.example.com;
+  }
 
-    server {
-        listen 80;
+  # Define a server block to handle incoming requests
+  server {
+    listen 80;  # Listen on port 80 (standard HTTP port)
 
-        location / {
-            proxy_pass http://myapp1;
-        }
+    location / {  # Match all requests (root path)
+      proxy_pass http://myapp1;  # Forward requests to the upstream group 'myapp1'
     }
+  }
 }
 ```
+
+**Explanation:**
+
+1. **`http { ... }`**: This section configures HTTP settings.
+2. **`upstream myapp1 { ... }`**: This defines a group of servers named `myapp1`.
+
+   - **`upstream myapp1`**: This names the group of servers.
+    You can name it anything.
+   - **`server appserver1.example.com;`**: This specifies a server in the group.
+    Replace `appserver1.example.com` (and the others) with your actual server addresses.
+   - **Round Robin**: Nginx uses Round Robin by default.
+    It sends requests to `appserver1`, then `appserver2`, then `appserver3`, and repeats.
+3. **`server { ... }`**: This configures the server to listen for requests.
+   - **`listen 80;`**: This tells Nginx to listen for requests on port 80 (the standard HTTP port).
+    Use port 443 for HTTPS.
+   - **`location / { ... }`**: This block handles all requests.
+    `location /` matches every request.
+   - **`proxy_pass http://myapp1;`**: This sends the request to the `myapp1` group of servers.
+    Nginx chooses a server from the group using Round Robin.
+    `http://` means Nginx will communicate with your servers using HTTP.
