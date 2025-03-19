@@ -20,7 +20,7 @@ Learn The Web is a modern documentation platform designed to help people underst
    - Node.js, Python
    - Databases (SQL and NoSQL)
    - Authentication and Authorization
-4. **Advanced Concepts** (Coming Soon): Production-level skills
+4. **Advanced Concepts**: Production-level skills for building and deploying robust web applications, including architectures, caching, containers, DevOps, security, and testing.
 
 This project is actively maintained and constantly improved with new content, examples, and features.
 
