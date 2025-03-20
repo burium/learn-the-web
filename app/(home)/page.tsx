@@ -90,10 +90,13 @@ export default function HomePage() {
             <ServerIcon className="size-4" />
             Backend
           </Link>
-          <div className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300">
+          <Link
+            href="/docs/advanced"
+            className="bg-fd-muted text-fd-primary shadow shadow-fd-muted-foreground/25 max-w-sm w-full h-12 flex items-center justify-center gap-1.5 font-semibold hover:-translate-y-1 hover:shadow-md transition ease-out duration-300"
+          >
             <GraduationCapIcon className="size-4" />
-            Advanced (soon)
-          </div>
+            Advanced
+          </Link>
         </div>
       </div>
 
