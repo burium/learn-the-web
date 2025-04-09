@@ -21,7 +21,6 @@
     "fumadocs-ui": "^15.1.1",
     "lucide-react": "^0.483.0",
     "marked": "^15.0.7",
-    "motion": "^12.4.5",
     "next": "^15.2.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
