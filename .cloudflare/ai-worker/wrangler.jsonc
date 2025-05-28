@@ -2,9 +2,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ai-worker",
   "main": "src/index.js",
-  "compatibility_date": "2025-02-21",
+  "compatibility_date": "2025-05-28",
   "ai": {
-    "binding": "AI"
+    "binding": "AI",
   },
   "unsafe": {
     "bindings": [
@@ -14,13 +14,13 @@
         "namespace_id": "1001",
         "simple": {
           "limit": 10,
-          "period": 60
-        }
-      }
-    ]
+          "period": 60,
+        },
+      },
+    ],
   },
   "observability": {
     "enabled": true,
-    "head_sampling_rate": 1
-  }
+    "head_sampling_rate": 1,
+  },
 }
