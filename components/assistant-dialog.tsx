@@ -239,7 +239,7 @@ export default function AssistantDialog({ api }: { api: string }) {
     () => (
       <ScrollArea
         viewportRef={viewportRef}
-        className="flex-1 overflow-y-auto h-[512px] px-4 mb-4 sm:px-0 sm:mb-0"
+        className="flex-1 overflow-y-auto h-[510px] sm:h-[410px] px-4 mb-4 sm:px-0 sm:mb-0"
       >
         {messages.length === 0 ? (
           EmptyChatState
